@@ -1,0 +1,111 @@
+---
+// src/components/ServiceCard.astro
+
+export interface Props {
+  title: string;
+  description: string;
+  price: string;
+  href: string;
+  bgClass?: string;
+  icon?: string;
+}
+
+const { title, description, price, href, bgClass = '', icon } = Astro.props;
+---
+
+<div class="service-card">
+  {bgClass && <div class={`service-image ${bgClass}`}></div>}
+  {icon && <div class="service-icon">{icon}</div>}
+  <h3>{title}</h3>
+  <p>{description}</p>
+  {price && <span class="price">{price}</span>}
+  <a href={href} class="service-link">Learn More →</a>
+</div>
+
+<style>
+  .service-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .service-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+  }
+
+  .service-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .service-icon {
+    font-size: 3rem;
+    padding: 2rem 1rem 1rem;
+    text-align: center;
+  }
+
+  .service-card h3 {
+    padding: 1.5rem 1.5rem 0;
+    margin: 0;
+    color: var(--dark);
+  }
+
+  .service-card p {
+    padding: 1rem 1.5rem;
+    margin: 0;
+    color: var(--text-light);
+    flex-grow: 1;
+  }
+
+  .price {
+    display: block;
+    padding: 0 1.5rem;
+    color: var(--brown);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-link {
+    padding: 1.5rem;
+    color: var(--brown);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .service-link:hover {
+    color: var(--red);
+  }
+
+  /* Background images */
+  .pottery-bg {
+    background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+  }
+
+  .candle-bg {
+    background: linear-gradient(135deg, #f4d4a8 0%, #d9a574 100%);
+  }
+
+  .family-bg {
+    background: linear-gradient(135deg, #d4a8b8 0%, #a87499 100%);
+  }
+
+  .kids-bg {
+    background: linear-gradient(135deg, #ffa07a 0%, #ff6b6b 100%);
+  }
+
+  .party-bg {
+    background: linear-gradient(135deg, #dda15e 0%, #c1666b 100%);
+  }
+
+  .event-bg {
+    background: linear-gradient(135deg, #a8d8d8 0%, #7ab8ba 100%);
+  }
+</style>

@@ -1,0 +1,299 @@
+---
+// src/pages/pottery-store.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+
+const potteryServices = [
+  {
+    title: 'Paint Your Own Pottery Session',
+    description: 'Choose from pre-made pottery pieces and paint them your way.',
+    price: 'Starting at $5-15',
+    href: '/pottery-store/paint-your-own-pottery-session',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Ceramic Painting Workshop',
+    description: 'Learn ceramic painting techniques in our structured workshop.',
+    price: '$20-30',
+    href: '/pottery-store/ceramic-painting-workshop',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Hand-Painted Mug Creation',
+    description: 'Paint your own coffee mug - the perfect personal keepsake.',
+    price: '$10-15',
+    href: '/pottery-store/hand-painted-mug-creation',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Personalized Plate Painting',
+    description: 'Create custom painted dinnerware pieces.',
+    price: '$15-20',
+    href: '/pottery-store/personalized-plate-painting',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Pottery Bowl Painting Session',
+    description: 'Paint beautiful ceramic bowls to add to your collection.',
+    price: '$12-18',
+    href: '/pottery-store/pottery-bowl-painting-session',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Figurine Painting Workshop',
+    description: 'Paint decorative ceramic figurines.',
+    price: '$10-15',
+    href: '/pottery-store/figurine-painting-workshop',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Seasonal Pottery Painting',
+    description: 'Paint seasonal designs for holidays and celebrations.',
+    price: '$15-25',
+    href: '/pottery-store/seasonal-pottery-painting',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Holiday Ornament Pottery Painting',
+    description: 'Create custom holiday ornaments for your tree.',
+    price: '$12-18',
+    href: '/pottery-store/holiday-ornament-pottery-painting',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Sip & Paint Pottery',
+    description: 'Adult pottery painting with BYOB beverages - unique experience!',
+    price: '$20-30',
+    href: '/pottery-store/sip-and-paint-pottery',
+    bgClass: 'event-bg',
+  },
+];
+---
+
+<BaseLayout
+  title="Pottery Store"
+  description="Paint your own pottery in Centerville, TN. No experience needed! Ceramic painting classes for all ages and skill levels. Book your pottery session today."
+  keywords="pottery studio, paint your own pottery, ceramic painting, pottery classes, Centerville"
+>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Pottery Studio & Classes Centerville, TN - Paint Your Own Pottery</h1>
+      <p>Create Beautiful Pottery with No Experience Needed</p>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><span>Pottery Store</span></li>
+      </ol>
+    </nav>
+
+    <section class="category-intro">
+      <h2>Our Pottery Services</h2>
+      <p>
+        Whether you're painting pre-made pieces, learning techniques, or hosting a special event, we have the perfect pottery
+        experience for you. All our pottery activities are designed for complete beginners, but experienced artists love
+        them too!
+      </p>
+    </section>
+
+    <section class="services-section">
+      <div class="services-grid">
+        {potteryServices.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </section>
+
+    <section class="why-pottery">
+      <h2>Why Choose Our Pottery Studio</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>🎨 No Experience Needed</h3>
+          <p>Complete beginners are our specialty. We guide you through every step of the process.</p>
+        </div>
+        <div class="why-item">
+          <h3>All Ages Welcome</h3>
+          <p>From kids to seniors, pottery is for everyone. Family-friendly and judgment-free.</p>
+        </div>
+        <div class="why-item">
+          <h3>Worth the Drive</h3>
+          <p>45 minutes from Nashville. A unique destination experience you won't find anywhere else nearby.</p>
+        </div>
+        <div class="why-item">
+          <h3>Affordable Pricing</h3>
+          <p>Starting at just $5 per piece. Creativity shouldn't break the bank.</p>
+        </div>
+        <div class="why-item">
+          <h3>Integrated Cafe</h3>
+          <p>Enjoy specialty coffee, ice cream, and snacks while you create.</p>
+        </div>
+        <div class="why-item">
+          <h3>Owner-Led Experience</h3>
+          <p>Concetta ensures every guest has an authentic, welcoming creative experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-pottery">
+      <h2>Featured Pottery Experience</h2>
+      <div style="background: var(--light-gray); padding: 3rem; border-radius: 8px; margin-top: 2rem;">
+        <div style="max-width: 600px;">
+          <h3>Paint Your Own Pottery Session</h3>
+          <p>
+            Our most popular offering! Choose from beautiful pre-made pottery pieces and paint them with your unique artistic
+            touch. Sessions last 45 minutes to 2 hours. We glaze and kiln-fire your pieces to a beautiful, lasting finish.
+          </p>
+          <ul style="margin-left: 1.5rem; margin-top: 1.5rem;">
+            <li>All supplies included (paints, brushes, tools)</li>
+            <li>Professional glazing and kiln firing</li>
+            <li>Take home or we'll ship your finished pieces</li>
+            <li>Perfect for individuals, couples, families, or groups</li>
+          </ul>
+          <a href="/pottery-store/paint-your-own-pottery-session" class="cta-button" style="margin-top: 2rem;">
+            Learn More & Book
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="group-bookings">
+      <h2>Group & Special Events</h2>
+      <p>Looking for something special? We host:</p>
+      <ul style="margin-left: 1.5rem;">
+        <li><strong>Birthday Parties:</strong> Create custom pottery memories for any age</li>
+        <li><strong>Corporate Team Building:</strong> Strengthen team bonds through creativity</li>
+        <li><strong>Family Reunions:</strong> Multi-generational fun and bonding</li>
+        <li><strong>Girls Nights:</strong> Bring your friends for BYOB pottery painting</li>
+        <li><strong>Date Nights:</strong> Romantic pottery painting for couples</li>
+      </ul>
+      <p style="margin-top: 2rem;">
+        <strong>Contact us at (931) XXX-XXXX or info@thelocalplace.com for group bookings and special events.</strong>
+      </p>
+    </section>
+
+    <section class="gallery-teaser">
+      <h2>See What Our Guests Create</h2>
+      <p>Scroll through our Instagram or visit us to see beautiful pottery creations from happy visitors!</p>
+      <p><a href="https://instagram.com/thelocalplace" target="_blank" class="cta-button">Follow Us on Instagram</a></p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb ol {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb li::after {
+    content: ' / ';
+    margin: 0 0.5rem;
+    color: #ccc;
+  }
+
+  .breadcrumb li:last-child::after {
+    content: '';
+  }
+
+  .breadcrumb a {
+    color: var(--brown);
+    text-decoration: underline;
+  }
+
+  .breadcrumb span {
+    color: var(--text-light);
+  }
+
+  .category-intro {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+  }
+
+  .category-intro p {
+    margin-bottom: 0;
+  }
+
+  .services-section {
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .why-pottery {
+    background: var(--cream);
+    padding: 3rem;
+    border-radius: 8px;
+    margin: 4rem 0;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .why-item {
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+  }
+
+  .why-item h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .featured-pottery {
+    margin: 4rem 0;
+  }
+
+  .group-bookings {
+    background: var(--light-gray);
+    padding: 3rem;
+    border-radius: 8px;
+    margin: 4rem 0;
+  }
+
+  .group-bookings ul li {
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-teaser {
+    text-align: center;
+    padding: 3rem;
+    background: var(--cream);
+    border-radius: 8px;
+    margin: 4rem 0 2rem;
+  }
+
+  .gallery-teaser h2 {
+    margin-top: 0;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

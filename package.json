@@ -1,0 +1,16 @@
+{
+  "name": "the-local-place",
+  "version": "1.0.0",
+  "description": "The Local Place - Pottery, Candles & Cafe Studio in Centerville, TN",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.0.0"
+  },
+  "devDependencies": {}
+}

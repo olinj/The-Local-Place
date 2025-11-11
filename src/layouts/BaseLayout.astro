@@ -1,0 +1,71 @@
+---
+// src/layouts/BaseLayout.astro
+import Navigation from '@components/Navigation.astro';
+import Footer from '@components/Footer.astro';
+import '@styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  ogType?: string;
+}
+
+const { title, description, keywords, ogImage, ogType = 'website' } = Astro.props as Props;
+
+const siteTitle = 'The Local Place - Pottery, Candles & Cafe in Centerville, TN';
+const siteDescription = 'Visit The Local Place for pottery painting, candle making classes, and specialty coffee in Centerville, TN. Family-friendly art studio with integrated cafe.';
+const fullTitle = title ? `${title} | The Local Place` : siteTitle;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
+    <meta name="description" content={description || siteDescription} />
+    <meta name="keywords" content={keywords || 'pottery, candles, art studio, Centerville, Tennessee'} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description || siteDescription} />
+    <meta property="og:image" content={ogImage || 'https://www.thelocalplace.com/og-image.jpg'} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description || siteDescription} />
+    <meta property="twitter:image" content={ogImage || 'https://www.thelocalplace.com/og-image.jpg'} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={Astro.url} />
+  </head>
+
+  <body>
+    <Navigation />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  @import '@styles/global.css';
+</style>

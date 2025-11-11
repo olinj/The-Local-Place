@@ -1,0 +1,303 @@
+---
+// src/pages/faq.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    category: 'General',
+    questions: [
+      {
+        q: 'Do I need pottery or candle-making experience to participate?',
+        a: 'No experience is needed at all! All our classes are designed for complete beginners. Whether you\'ve never painted pottery before or are an experienced artist, you\'ll love our studio.',
+      },
+      {
+        q: 'What if I\'m not artistic or creative?',
+        a: 'This is a judgment-free zone. There are no mistakes in creative activities—only happy accidents and learning moments. Many of our most satisfied visitors said they weren\'t "artistic" when they arrived!',
+      },
+      {
+        q: 'How far away are you from Nashville and other cities?',
+        a: 'We\'re located in Centerville, TN, approximately 45 minutes south of Nashville, 35 minutes from Franklin, and 40 minutes from Brentwood. We\'re worth the drive for a unique creative experience!',
+      },
+      {
+        q: 'What makes Made @ The Local different?',
+        a: 'We combine pottery, candle-making, and a full cafe in one unique studio. Owner-led by Concetta, we focus on creating a welcoming, judgment-free environment where creativity thrives at any skill level.',
+      },
+    ],
+  },
+  {
+    category: 'Experience Details',
+    questions: [
+      {
+        q: 'How long does a typical pottery or candle-making session last?',
+        a: 'Pottery painting typically takes 45 minutes to 2 hours, depending on how many pieces you choose and your pace. Candle-making usually takes 30-60 minutes. You set the pace—no rushing!',
+      },
+      {
+        q: 'What should I wear to a pottery or candle-making session?',
+        a: 'Wear comfortable, casual clothing that you don\'t mind getting paint or wax on. An apron is provided if you\'d like extra protection. Closed-toe shoes are recommended for safety.',
+      },
+      {
+        q: 'Can I customize my experience?',
+        a: 'Absolutely! Choose how many pieces you want to paint, whether to add wine (BYOB pottery), include cafe time, and more. Tell us what you\'re looking for and we\'ll make it happen.',
+      },
+      {
+        q: 'What if I make a mistake while painting?',
+        a: 'There are no mistakes! Imperfect lines, color mixing, and happy accidents all add character and charm. That\'s the beauty of handmade art.',
+      },
+      {
+        q: 'Can I bring my own wine or beverages for Sip and Paint?',
+        a: 'Yes! Our Sip and Paint Pottery experience is BYOB (Bring Your Own Beverage). Bring wine, beer, coffee, or any beverage you\'d like to enjoy while you create.',
+      },
+      {
+        q: 'Can I take photos or videos of my experience?',
+        a: 'Of course! We love when guests capture their creative moments. Feel free to take photos and videos for social media or personal memories.',
+      },
+    ],
+  },
+  {
+    category: 'Pricing & Booking',
+    questions: [
+      {
+        q: 'What\'s included in the pottery or candle price?',
+        a: 'All supplies are included: paints, brushes, tools, aprons, and glazing. For pottery, professional kiln-firing is included. For candles, all wax, scents, and containers are included.',
+      },
+      {
+        q: 'Do you offer group discounts?',
+        a: 'Yes! Groups of 6 or more receive special group rates. Contact us at (931) XXX-XXXX or info@thelocalplace.com to discuss your group event.',
+      },
+      {
+        q: 'Can I book a private event or party?',
+        a: 'Absolutely! We host birthday parties, corporate team building, family reunions, and more. Contact us to customize your event and check availability.',
+      },
+      {
+        q: 'How do I make a reservation?',
+        a: 'You can book online, call us at (931) XXX-XXXX, email info@thelocalplace.com, or simply walk in during business hours. Drop-ins are always welcome!',
+      },
+      {
+        q: 'What\'s your cancellation policy?',
+        a: 'Cancellations made 24 hours in advance receive a full refund. Cancellations within 24 hours may be charged a portion of the booking fee.',
+      },
+      {
+        q: 'Is there parking available?',
+        a: 'Yes! Ample free parking is available at 111 South Public Square. We\'re located upstairs—there\'s an elevator for accessibility.',
+      },
+      {
+        q: 'Do you sell gift certificates?',
+        a: 'Yes! Gift certificates make perfect presents for creative people. Available in any amount. Contact us or visit us in person to purchase.',
+      },
+    ],
+  },
+  {
+    category: 'Accessibility & Age',
+    questions: [
+      {
+        q: 'Are there age restrictions?',
+        a: 'No specific age restrictions! Children as young as 3 can participate with guidance. We have activities suitable for all ages from toddlers to seniors.',
+      },
+      {
+        q: 'Do you accommodate guests with disabilities?',
+        a: 'We\'re committed to accessibility! Our studio is upstairs with an elevator. We can accommodate various mobility needs and special requirements. Contact us in advance if you need specific accommodations.',
+      },
+      {
+        q: 'Do you have dietary restriction options for cafe items?',
+        a: 'Yes! Our integrated cafe offers options for various dietary needs including gluten-free, dairy-free, and vegan choices. Ask our staff about current options.',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="FAQ"
+  description="Frequently asked questions about pottery painting, candle making classes, and our studio in Centerville, TN. Get answers to your creative questions!"
+  keywords="FAQ, pottery questions, candle making, class information"
+>
+  <div class="container py-4">
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-intro">
+      <p>
+        Have questions about our pottery and candle-making experiences? Here are answers to our most frequently asked
+        questions. Can't find what you're looking for?{' '}
+        <a href="mailto:info@thelocalplace.com">Contact us directly!</a>
+      </p>
+    </div>
+
+    {faqs.map((category) => (
+      <section class="faq-category">
+        <h2>{category.category}</h2>
+
+        <div class="faq-items">
+          {category.questions.map((item, index) => (
+            <details class="faq-item" open={index === 0}>
+              <summary class="faq-question">
+                <span>{item.q}</span>
+                <span class="toggle-icon">+</span>
+              </summary>
+              <div class="faq-answer">
+                <p>{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <section class="faq-contact">
+      <h2>Still Have Questions?</h2>
+      <p>We'd love to help! Reach out to us through any of these channels:</p>
+      <div style="margin-top: 2rem;">
+        <p>
+          <strong>Phone:</strong> <a href="tel:(931)XXX-XXXX">(931) XXX-XXXX</a>
+        </p>
+        <p>
+          <strong>Email:</strong> <a href="mailto:info@thelocalplace.com">info@thelocalplace.com</a>
+        </p>
+        <p>
+          <strong>Address:</strong> 111 South Public Square, Upstairs<br />Centerville, TN 37033
+        </p>
+        <p>
+          <strong>Hours:</strong><br />Monday-Thursday: 10 AM - 6 PM<br />Friday-Saturday: 10 AM - 8 PM<br />Sunday: 12 PM - 5 PM
+        </p>
+      </div>
+      <div style="margin-top: 3rem; text-align: center;">
+        <a href="/" class="cta-button">Back to Home</a>
+        <a href="/pottery-store" class="cta-button" style="margin-left: 1rem;">
+          Browse Services
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .faq-intro {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .faq-intro a {
+    color: var(--brown);
+    font-weight: 600;
+  }
+
+  .faq-category {
+    margin-bottom: 4rem;
+  }
+
+  .faq-category h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid var(--brown);
+    padding-bottom: 1rem;
+  }
+
+  .faq-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--white);
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    box-shadow: var(--shadow);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    background: var(--light-gray);
+    font-weight: 600;
+    color: var(--dark);
+    user-select: none;
+    transition: all 0.3s ease;
+  }
+
+  .faq-question:hover {
+    background: #efefef;
+  }
+
+  .faq-question span:first-child {
+    text-align: left;
+  }
+
+  .toggle-icon {
+    flex-shrink: 0;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] .toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 1.5rem;
+    background: var(--white);
+    border-top: 1px solid #ddd;
+  }
+
+  .faq-answer p {
+    margin-bottom: 0;
+    line-height: 1.8;
+  }
+
+  .faq-contact {
+    background: var(--cream);
+    padding: 3rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  .faq-contact h2 {
+    text-align: center;
+  }
+
+  .faq-contact p {
+    text-align: left;
+    display: inline-block;
+    margin: 0.5rem 0;
+  }
+
+  .faq-contact a {
+    color: var(--brown);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .faq-question {
+      padding: 1rem;
+    }
+
+    .faq-answer {
+      padding: 1rem;
+    }
+
+    .faq-contact {
+      padding: 1.5rem;
+    }
+
+    .faq-category h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>

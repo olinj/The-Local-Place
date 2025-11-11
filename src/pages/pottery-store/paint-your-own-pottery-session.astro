@@ -1,0 +1,190 @@
+---
+// src/pages/pottery-store/paint-your-own-pottery-session.astro
+import ServiceLayout from '@layouts/ServiceLayout.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+---
+
+<ServiceLayout
+  title="Paint Your Own Pottery Session"
+  description="Choose from pre-made pottery pieces and paint them your way. Perfect for all ages and skill levels. No pottery experience needed!"
+  price="Starting at $5-15"
+  duration="45 minutes to 2 hours"
+  location="Centerville, TN"
+  keywords="paint your own pottery, pottery painting, DIY pottery, ceramic painting, Centerville"
+>
+  <section slot="overview">
+    <h2>Paint Your Own Pottery Session - Centerville, TN</h2>
+
+    <p>
+      Paint Your Own Pottery is the perfect creative experience for anyone looking for a fun, judgment-free activity.
+      You'll choose from our beautiful selection of pre-made ceramic pieces - bowls, mugs, plates, figurines, and more - and
+      paint them with your own unique artistic flair.
+    </p>
+
+    <h3>The Experience</h3>
+    <p>
+      Walk in, select your favorite pieces, and let your creativity flow. Our studio provides all the paints, brushes, and
+      supplies you need. No pottery experience required - we guide you through every step. Whether you're a first-time
+      painter or an experienced artist, you'll create something beautiful.
+    </p>
+
+    <p>
+      Sessions typically last 45 minutes to 2 hours, depending on how many pieces you choose and how detailed you want to
+      get. Take your time, enjoy the process, and create memories with family and friends.
+    </p>
+
+    <h3>What's Included</h3>
+    <ul style="margin-left: 1.5rem; margin-bottom: 2rem;">
+      <li>Selection of pre-made pottery pieces to choose from</li>
+      <li>All paints, brushes, and painting supplies</li>
+      <li>Guidance from our friendly studio team</li>
+      <li>Professional glazing and firing (pieces are kiln-fired to perfection)</li>
+      <li>Pickup or shipping of your finished pieces</li>
+    </ul>
+
+    <h3>Perfect For</h3>
+    <ul style="margin-left: 1.5rem; margin-bottom: 2rem;">
+      <li>Individual creative time and relaxation</li>
+      <li>Couples bonding and date nights</li>
+      <li>Family activities (all ages welcome)</li>
+      <li>Girls nights out and friend gatherings</li>
+      <li>Birthday parties and celebrations</li>
+      <li>Corporate team building events</li>
+    </ul>
+
+    <h3>Why Choose Made @ The Local</h3>
+    <ul style="margin-left: 1.5rem; margin-bottom: 2rem;">
+      <li>Owner-led experience with personal touch from Concetta</li>
+      <li>No experience needed - we guide beginners</li>
+      <li>Integrated cafe with coffee, ice cream, and snacks</li>
+      <li>Affordable pricing starting at just $5</li>
+      <li>High-quality glazing and kiln firing</li>
+      <li>Judgment-free zone - mistakes are just happy accidents!</li>
+    </ul>
+
+    <h3>How It Works</h3>
+    <ol style="margin-left: 1.5rem; margin-bottom: 2rem;">
+      <li><strong>Arrive & Browse:</strong> Come to our studio and browse our selection of pottery pieces</li>
+      <li><strong>Choose Your Pieces:</strong> Select 1-5 items you'd like to paint</li>
+      <li><strong>Get Supplies:</strong> We set you up with paints, brushes, and a comfortable workspace</li>
+      <li><strong>Paint & Create:</strong> Take your time painting your pieces - usually 45 min to 2 hours</li>
+      <li><strong>We Handle the Rest:</strong> We glaze and kiln-fire your pieces to perfection</li>
+      <li><strong>Pickup or Ship:</strong> Pick up your finished pieces or we'll ship them to you</li>
+    </ol>
+
+    <h3>Pricing</h3>
+    <ul style="margin-left: 1.5rem; margin-bottom: 2rem;">
+      <li><strong>Individual Pieces:</strong> $5-15 per piece depending on size and complexity</li>
+      <li><strong>Studio Time:</strong> No additional studio rental fee</li>
+      <li><strong>Supplies:</strong> All included in the piece price</li>
+      <li><strong>Glazing & Firing:</strong> Included in the price</li>
+    </ul>
+
+    <h3>Reservation Information</h3>
+    <p>
+      <strong>Hours:</strong> Monday-Thursday 10 AM - 6 PM | Friday-Saturday 10 AM - 8 PM | Sunday 12 PM - 5 PM
+    </p>
+    <p>
+      Drop-ins welcome! For large groups or special events, we recommend booking in advance. Contact us at (931) XXX-XXXX
+      or info@thelocalplace.com
+    </p>
+
+    <div style="background: var(--light-gray); padding: 2rem; border-radius: 8px; margin-top: 2rem;">
+      <h4>Don't Worry About...</h4>
+      <ul style="margin-left: 1.5rem;">
+        <li><strong>Not being artistic:</strong> This is judgment-free! Imperfect lines become beautiful character.</li>
+        <li><strong>Making mistakes:</strong> There's no "wrong" way to paint pottery.</li>
+        <li><strong>Drying time:</strong> Your pieces are kiln-fired to a beautiful, lasting finish.</li>
+        <li><strong>Cleanup:</strong> We handle all the cleanup - you just create!</li>
+      </ul>
+    </div>
+  </section>
+
+  <section slot="testimonials">
+    <div class="testimonial-card">
+      <p class="testimonial-quote">
+        "What a fun experience! We were nervous at first, but Concetta made us feel so comfortable. Our pieces turned out
+        beautiful!"
+      </p>
+      <p class="testimonial-author">Sarah & Mike - Nashville (45 min away)</p>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="testimonial-quote">
+        "We brought our kids and they had the best time. The staff was amazing with them, and they're so proud of their
+        creations!"
+      </p>
+      <p class="testimonial-author">Jennifer - Franklin (35 min away)</p>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="testimonial-quote">
+        "Perfect date night! We came for the pottery and stayed for the cafe ice cream. Can't wait to come back!"
+      </p>
+      <p class="testimonial-author">David & Lisa - Brentwood (40 min away)</p>
+    </div>
+  </section>
+
+  <section slot="related">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+      <ServiceCard
+        title="Ceramic Painting Workshop"
+        description="Learn technique-focused ceramic painting in our structured workshop format."
+        price="$20-30"
+        href="/pottery-store/ceramic-painting-workshop"
+      />
+      <ServiceCard
+        title="Hand-Painted Mug Creation"
+        description="Paint your own custom coffee mug - the perfect personal keepsake or gift."
+        price="$10-15"
+        href="/pottery-store/hand-painted-mug-creation"
+      />
+      <ServiceCard
+        title="Sip & Paint Pottery"
+        description="Adult pottery painting with BYOB beverages. Perfect girls night or date experience!"
+        price="$20-30"
+        href="/pottery-store/sip-and-paint-pottery"
+      />
+    </div>
+  </section>
+</ServiceLayout>
+
+<style>
+  ol {
+    list-style-type: decimal;
+  }
+
+  ol li {
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    margin-top: 2rem;
+  }
+
+  h4 {
+    margin-top: 1.5rem;
+    color: var(--brown);
+  }
+
+  .testimonial-card {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-quote {
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+  }
+
+  .testimonial-author {
+    color: var(--dark);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+</style>

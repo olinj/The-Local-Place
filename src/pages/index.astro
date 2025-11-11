@@ -1,0 +1,280 @@
+---
+// src/pages/index.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PillarCard from '@components/PillarCard.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+
+const featuredServices = [
+  {
+    title: 'Paint Your Own Pottery Session',
+    description: 'Choose from pre-made pottery pieces and paint them your way. No experience needed!',
+    price: 'Starting at $5-15',
+    href: '/pottery-store/paint-your-own-pottery-session',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Pour Your Own Candle Class',
+    description: 'Pour your own custom scented candle and take home your handmade creation.',
+    price: '$15-25',
+    href: '/candle-store/pour-your-own-candle-class',
+    bgClass: 'candle-bg',
+  },
+  {
+    title: 'Family Pottery Painting Experience',
+    description: 'Multi-generational creative session. Perfect for making memories with loved ones.',
+    price: 'Starting at $50',
+    href: '/art-studio/family-pottery-painting-experience',
+    bgClass: 'family-bg',
+  },
+  {
+    title: 'Kids Pottery Painting Class',
+    description: 'Age-appropriate pottery painting for children. Build confidence and create art!',
+    price: '$8-12 per child',
+    href: '/art-studio/kids-pottery-painting-class',
+    bgClass: 'kids-bg',
+  },
+  {
+    title: 'Date Night Pottery Painting',
+    description: 'Romantic pottery painting experience designed for couples bonding and fun.',
+    price: '$40-60 per couple',
+    href: '/pottery-classes/date-night-pottery-painting',
+    bgClass: 'party-bg',
+  },
+  {
+    title: 'Sip & Paint Pottery',
+    description: 'Adult pottery painting experience. Bring your own wine and enjoy a creative evening!',
+    price: '$20-30',
+    href: '/pottery-store/sip-and-paint-pottery',
+    bgClass: 'event-bg',
+  },
+];
+
+const whyChooseUs = [
+  {
+    icon: '🎨',
+    title: 'All Ages & Skill Levels',
+    description:
+      "Whether you're 5 or 95, complete beginner or experienced artist, we have something perfect for you.",
+  },
+  {
+    icon: '👥',
+    title: 'Judgment-Free Zone',
+    description:
+      'Create at your own pace. There are no mistakes, only happy accidents and learning moments.',
+  },
+  {
+    icon: '☕',
+    title: 'Integrated Cafe',
+    description: 'Enjoy specialty coffee, snacks, and ice cream while you create. Everything you need in one place.',
+  },
+  {
+    icon: '💰',
+    title: 'Affordable & Accessible',
+    description: 'Pottery from $5, candles from $15, and classes starting at $5. Creativity shouldn\'t break the bank.',
+  },
+  {
+    icon: '👨‍🎨',
+    title: 'Owner-Led Experience',
+    description: 'Concetta personally ensures every visitor has a welcoming, authentic creative experience.',
+  },
+  {
+    icon: '🎉',
+    title: 'Perfect for Any Occasion',
+    description: 'Birthday parties, corporate team building, family reunions, or just a fun day out—we host it all.',
+  },
+];
+
+const pillars = [
+  {
+    icon: '🏺',
+    title: 'Made @ The Local Studio',
+    description: 'Paint pottery, make candles, and create art with family and friends. Perfect for all ages and skill levels.',
+    href: '/pottery-store',
+    linkText: 'Explore Studio →',
+  },
+  {
+    icon: '☕',
+    title: 'The Local Place Cafe',
+    description: 'Specialty espresso, homemade ice cream by Concetta, and fresh cafe food. Your creative space needs fuel.',
+    href: '/cafe',
+    linkText: 'See Menu →',
+  },
+  {
+    icon: '🚗',
+    title: 'Local Drive Thru',
+    description: 'Quick coffee, energy drinks, and fresh salads & wraps. Grab and go, or stay and create.',
+    href: '/drive-thru',
+    linkText: 'View Menu →',
+  },
+];
+---
+
+<BaseLayout
+  title="Home"
+  description="Visit The Local Place for pottery painting, candle making classes, and specialty coffee in Centerville, TN. Family-friendly art studio with integrated cafe."
+  keywords="pottery, candle making, art studio, Centerville, Tennessee, family activities"
+>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Pottery Store Centerville TN</h1>
+      <p>Where Creativity, Coffee, and Community Come Together</p>
+      <a href="/pottery-store" class="hero-cta">Explore Our Studio</a>
+    </div>
+  </section>
+
+  <!-- BUSINESS INFORMATION -->
+  <section class="business-info">
+    <div class="container">
+      <div class="business-card">
+        <h2>Made @ The Local</h2>
+        <p><strong>Pottery and Candle Studio</strong></p>
+        <p>📍 111 South Public Square, Upstairs<br />Centerville, TN 37033</p>
+        <p>📞 (931) XXX-XXXX<br />📧 info@thelocalplace.com</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE PILLARS SECTION -->
+  <section class="three-pillars">
+    <div class="container">
+      <h2>What We Offer</h2>
+      <div class="pillars-grid">
+        {pillars.map((pillar) => (
+          <PillarCard {...pillar} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US SECTION -->
+  <section class="why-choose-us">
+    <div class="container">
+      <h2>Why Choose The Local Place</h2>
+      <div class="why-grid">
+        {whyChooseUs.map((item) => (
+          <div class="why-item">
+            <h3>{item.icon} {item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED SERVICES SECTION -->
+  <section class="featured-services">
+    <div class="container">
+      <h2>Featured Services</h2>
+      <div class="services-grid">
+        {featuredServices.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact-section py-4">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <p><strong>Made @ The Local</strong></p>
+          <p>📍 111 South Public Square, Upstairs<br />Centerville, TN 37033</p>
+          <p>📞 <a href="tel:(931)XXX-XXXX">(931) XXX-XXXX</a></p>
+          <p>📧 <a href="mailto:info@thelocalplace.com">info@thelocalplace.com</a></p>
+        </div>
+        <div class="contact-form">
+          <h3>Book Your Experience</h3>
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="service">Service</label>
+              <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="pottery">Pottery Store</option>
+                <option value="candles">Candle Store</option>
+                <option value="family">Art Studio</option>
+                <option value="classes">Pottery Classes</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="cta-button">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-section {
+    background-color: var(--light-gray);
+  }
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .contact-info h3,
+  .contact-form h3 {
+    margin-top: 0;
+    color: var(--dark);
+  }
+
+  .contact-info a {
+    color: var(--brown);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--brown);
+    box-shadow: 0 0 0 3px rgba(139, 111, 71, 0.1);
+  }
+</style>
