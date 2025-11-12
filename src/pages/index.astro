@@ -84,27 +84,82 @@ const whyChooseUs = [
   },
 ];
 
+const potteryServices = [
+  {
+    title: 'Paint Your Own Pottery Session',
+    description: 'Choose from pre-made pottery pieces and paint them your way. Professional glazing and kiln-firing included.',
+    href: '/pottery-store/paint-your-own-pottery-session',
+  },
+  {
+    title: 'Ceramic Painting Workshop',
+    description: 'Learn professional ceramic painting techniques in our structured workshop.',
+    href: '/pottery-store/ceramic-painting-workshop',
+  },
+  {
+    title: 'Hand-Painted Mug Creation',
+    description: 'Paint your own coffee mug - the perfect personal keepsake or gift.',
+    href: '/pottery-store/hand-painted-mug-creation',
+  },
+  {
+    title: 'Personalized Plate Painting',
+    description: 'Create custom painted dinnerware pieces for special occasions.',
+    href: '/pottery-store/personalized-plate-painting',
+  },
+  {
+    title: 'Pottery Bowl Painting Session',
+    description: 'Paint beautiful ceramic bowls to add to your collection. Food-safe and dishwasher-safe.',
+    href: '/pottery-store/pottery-bowl-painting-session',
+  },
+  {
+    title: 'Figurine Painting Workshop',
+    description: 'Paint decorative ceramic figurines with professional techniques.',
+    href: '/pottery-store/figurine-painting-workshop',
+  },
+  {
+    title: 'Seasonal Pottery Painting',
+    description: 'Paint seasonal designs for holidays and celebrations.',
+    href: '/pottery-store/seasonal-pottery-painting',
+  },
+  {
+    title: 'Holiday Ornament Pottery Painting',
+    description: 'Create custom holiday ornaments that become treasured family heirlooms.',
+    href: '/pottery-store/holiday-ornament-pottery-painting',
+  },
+  {
+    title: 'Sip & Paint Pottery',
+    description: 'Adult pottery painting with BYOB beverages. Unique evening experience!',
+    href: '/pottery-store/sip-and-paint-pottery',
+  },
+];
+
 const pillars = [
   {
     icon: '🏺',
-    title: 'Made @ The Local Studio',
-    description: 'Paint pottery, make candles, and create art with family and friends. Perfect for all ages and skill levels.',
-    href: '/pottery-store',
-    linkText: 'Explore Studio →',
+    title: 'Pottery Store',
+    description: 'Paint pottery pieces with professional glazing. We have 9 unique pottery painting experiences for all ages and skill levels.',
+    href: '#pottery-services',
+    linkText: 'View All Services →',
   },
   {
-    icon: '☕',
-    title: 'The Local Place Cafe',
-    description: 'Specialty espresso, homemade ice cream by Concetta, and fresh cafe food. Your creative space needs fuel.',
-    href: '/cafe',
-    linkText: 'See Menu →',
+    icon: '🕯️',
+    title: 'Candle Store',
+    description: 'Make your own custom scented candles. Choose from 8 candle-making experiences and workshops.',
+    href: '/candle-store',
+    linkText: 'Explore Candles →',
   },
   {
-    icon: '🚗',
-    title: 'Local Drive Thru',
-    description: 'Quick coffee, energy drinks, and fresh salads & wraps. Grab and go, or stay and create.',
-    href: '/drive-thru',
-    linkText: 'View Menu →',
+    icon: '👨‍👩‍👧‍👦',
+    title: 'Art Studio',
+    description: 'Family-friendly art experiences including kids pottery, family sessions, and combo activities.',
+    href: '/art-studio',
+    linkText: 'Family Art →',
+  },
+  {
+    icon: '🎨',
+    title: 'Pottery Classes',
+    description: 'Structured classes for all occasions - date nights, team building, ladies nights, and more.',
+    href: '/pottery-classes',
+    linkText: 'View Classes →',
   },
 ];
 ---
@@ -162,10 +217,27 @@ const pillars = [
     </div>
   </section>
 
+  <!-- POTTERY SERVICES SECTION -->
+  <section id="pottery-services" class="pottery-services">
+    <div class="container">
+      <h2>Pottery Store Services</h2>
+      <p class="section-intro">Explore our 9 unique pottery painting experiences. Professional ceramic paints, brushes, and kiln-firing included with every service.</p>
+      <div class="pottery-services-grid">
+        {potteryServices.map((service) => (
+          <div class="pottery-service-card">
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+            <a href={service.href} class="service-link">Learn More →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- FEATURED SERVICES SECTION -->
   <section class="featured-services">
     <div class="container">
-      <h2>Featured Services</h2>
+      <h2>Cross-Category Featured Experiences</h2>
       <div class="services-grid">
         {featuredServices.map((service) => (
           <ServiceCard {...service} />
@@ -276,5 +348,61 @@ const pillars = [
     outline: none;
     border-color: var(--brown);
     box-shadow: 0 0 0 3px rgba(139, 111, 71, 0.1);
+  }
+
+  .pottery-services {
+    padding: 4rem 0;
+    background-color: #fafaf8;
+  }
+
+  .section-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+
+  .pottery-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .pottery-service-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--brown);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .pottery-service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .pottery-service-card h3 {
+    margin-top: 0;
+    color: var(--dark);
+    font-size: 1.1rem;
+  }
+
+  .pottery-service-card p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-link {
+    display: inline-block;
+    color: var(--brown);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .service-link:hover {
+    color: var(--red);
   }
 </style>
