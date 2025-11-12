@@ -33,10 +33,9 @@ const { title, description, price, duration, location = 'Centerville, TN', keywo
         </ol>
       </nav>
 
-      <header class="service-header">
-        <h1>{title} - {location}</h1>
+      <div class="service-header">
         <p class="subtitle">Worth the Drive from Nashville & Beyond</p>
-      </header>
+      </div>
 
       <div class="service-content">
         <section class="service-overview">
@@ -153,14 +152,11 @@ const { title, description, price, duration, location = 'Centerville, TN', keywo
     padding-bottom: 2rem;
   }
 
-  .service-header h1 {
-    margin-bottom: 0.5rem;
-  }
-
   .subtitle {
     font-size: 1.1rem;
     color: var(--brown);
     font-weight: 500;
+    margin-bottom: 0.5rem;
   }
 
   .service-content {
