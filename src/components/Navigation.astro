@@ -18,7 +18,8 @@ const navLinks: NavLink[] = [
   <div class="nav-container">
     <div class="logo">
       <a href="/">
-        <h1>The Local Place</h1>
+        <h1>Made @ The Local Pottery and Candle Studio</h1>
+        <p class="logo-subtitle">Centerville, TN</p>
       </a>
     </div>
     <ul class="nav-menu">
@@ -55,7 +56,7 @@ const navLinks: NavLink[] = [
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 100px;
   }
 
   .logo {
@@ -68,9 +69,19 @@ const navLinks: NavLink[] = [
   }
 
   .logo h1 {
-    font-size: 1.5rem;
-    margin: 0;
+    font-size: 1rem;
+    margin: 0 0 0.25rem 0;
     color: var(--brown);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .logo-subtitle {
+    font-size: 0.75rem;
+    color: #666;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.2;
   }
 
   .nav-menu {
