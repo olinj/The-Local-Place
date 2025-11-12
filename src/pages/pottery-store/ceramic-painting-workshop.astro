@@ -1,5 +1,6 @@
 ---
 import ServiceLayout from '@layouts/ServiceLayout.astro';
+import TestimonialWithSchema from '@components/TestimonialWithSchema.astro';
 ---
 
 <ServiceLayout
@@ -57,18 +58,24 @@ import ServiceLayout from '@layouts/ServiceLayout.astro';
   </section>
 
   <section slot="testimonials">
-    <div style="background: var(--cream); padding: 1.5rem; border-left: 4px solid var(--brown); margin-bottom: 1.5rem; border-radius: 4px;">
-      <p><em>"I learned so much in this workshop! The instructor's techniques really helped me improve my painting skills. My pieces look professional!"</em></p>
-      <p><strong>Rebecca M.</strong> - Nashville (45 minutes away)</p>
-    </div>
-    <div style="background: var(--cream); padding: 1.5rem; border-left: 4px solid var(--brown); margin-bottom: 1.5rem; border-radius: 4px;">
-      <p><em>"Perfect for someone wanting to get serious about pottery painting. Structured, educational, and fun. Highly recommend!"</em></p>
-      <p><strong>David H.</strong> - Brentwood (40 minutes away)</p>
-    </div>
-    <div style="background: var(--cream); padding: 1.5rem; border-left: 4px solid var(--brown); margin-bottom: 1.5rem; border-radius: 4px;">
-      <p><em>"Worth the drive! The instruction was clear and the results were beautiful. I'm planning to take another workshop!"</em></p>
-      <p><strong>Karen S.</strong> - Franklin (35 minutes away)</p>
-    </div>
+    <TestimonialWithSchema
+      quote="I learned so much in this workshop! The instructor's techniques really helped me improve my painting skills. My pieces look professional!"
+      author="Rebecca M."
+      location="Nashville (45 minutes away)"
+      rating={5}
+    />
+    <TestimonialWithSchema
+      quote="Perfect for someone wanting to get serious about pottery painting. Structured, educational, and fun. Highly recommend!"
+      author="David H."
+      location="Brentwood (40 minutes away)"
+      rating={5}
+    />
+    <TestimonialWithSchema
+      quote="Worth the drive! The instruction was clear and the results were beautiful. I'm planning to take another workshop!"
+      author="Karen S."
+      location="Franklin (35 minutes away)"
+      rating={5}
+    />
   </section>
 
   <section slot="related">

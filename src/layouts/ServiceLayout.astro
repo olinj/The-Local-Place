@@ -40,6 +40,33 @@ const serviceSchema = {
   "availableLanguage": "en",
   "serviceType": "Art Class"
 };
+
+// Create BreadcrumbList schema for breadcrumb navigation
+const category = Astro.url.pathname.split('/')[1] || 'services';
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thelocalplace.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": category.charAt(0).toUpperCase() + category.slice(1),
+      "item": `https://www.thelocalplace.com/${category}`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": title,
+      "item": Astro.url.toString()
+    }
+  ]
+};
 ---
 
 <BaseLayout
@@ -49,6 +76,9 @@ const serviceSchema = {
 >
   <!-- Service Schema Markup for Local Search -->
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <!-- BreadcrumbList Schema for Rich Snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <article class="service-page">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">

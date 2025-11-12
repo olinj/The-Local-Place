@@ -2,6 +2,7 @@
 // src/pages/pottery-store/paint-your-own-pottery-session.astro
 import ServiceLayout from '@layouts/ServiceLayout.astro';
 import ServiceCard from '@components/ServiceCard.astro';
+import TestimonialWithSchema from '@components/TestimonialWithSchema.astro';
 ---
 
 <ServiceLayout
@@ -101,28 +102,24 @@ import ServiceCard from '@components/ServiceCard.astro';
   </section>
 
   <section slot="testimonials">
-    <div class="testimonial-card">
-      <p class="testimonial-quote">
-        "What a fun experience! We were nervous at first, but Concetta made us feel so comfortable. Our pieces turned out
-        beautiful!"
-      </p>
-      <p class="testimonial-author">Sarah & Mike - Nashville (45 min away)</p>
-    </div>
-
-    <div class="testimonial-card">
-      <p class="testimonial-quote">
-        "We brought our kids and they had the best time. The staff was amazing with them, and they're so proud of their
-        creations!"
-      </p>
-      <p class="testimonial-author">Jennifer - Franklin (35 min away)</p>
-    </div>
-
-    <div class="testimonial-card">
-      <p class="testimonial-quote">
-        "Perfect date night! We came for the pottery and stayed for the cafe ice cream. Can't wait to come back!"
-      </p>
-      <p class="testimonial-author">David & Lisa - Brentwood (40 min away)</p>
-    </div>
+    <TestimonialWithSchema
+      quote="What a fun experience! We were nervous at first, but Concetta made us feel so comfortable. Our pieces turned out beautiful!"
+      author="Sarah & Mike"
+      location="Nashville (45 min away)"
+      rating={5}
+    />
+    <TestimonialWithSchema
+      quote="We brought our kids and they had the best time. The staff was amazing with them, and they're so proud of their creations!"
+      author="Jennifer"
+      location="Franklin (35 min away)"
+      rating={5}
+    />
+    <TestimonialWithSchema
+      quote="Perfect date night! We came for the pottery and stayed for the cafe ice cream. Can't wait to come back!"
+      author="David & Lisa"
+      location="Brentwood (40 min away)"
+      rating={5}
+    />
   </section>
 
   <section slot="related">

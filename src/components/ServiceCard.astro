@@ -8,14 +8,15 @@ export interface Props {
   href: string;
   bgClass?: string;
   icon?: string;
+  imageAlt?: string;
 }
 
-const { title, description, price, href, bgClass = '', icon } = Astro.props;
+const { title, description, price, href, bgClass = '', icon, imageAlt = title } = Astro.props;
 ---
 
 <div class="service-card">
-  {bgClass && <div class={`service-image ${bgClass}`}></div>}
-  {icon && <div class="service-icon">{icon}</div>}
+  {bgClass && <div class={`service-image ${bgClass}`} role="img" aria-label={imageAlt}></div>}
+  {icon && <div class="service-icon" aria-label={`${title} icon`}>{icon}</div>}
   <h3>{title}</h3>
   <p>{description}</p>
   {price && <span class="price">{price}</span>}

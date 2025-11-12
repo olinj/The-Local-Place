@@ -108,6 +108,22 @@ const faqs = [
     ],
   },
 ];
+
+// Generate FAQ Schema for featured snippets
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.flatMap(category =>
+    category.questions.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  )
+};
 ---
 
 <BaseLayout
@@ -115,6 +131,9 @@ const faqs = [
   description="Frequently asked questions about pottery painting, candle making classes, and our studio in Centerville, TN. Get answers to your creative questions!"
   keywords="FAQ, pottery questions, candle making, class information"
 >
+  <!-- FAQ Schema for Featured Snippets -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
   <div class="container py-4">
     <h1>Frequently Asked Questions</h1>
 
