@@ -12,6 +12,34 @@ export interface Props {
 }
 
 const { title, description, price, duration, location = 'Centerville, TN', keywords } = Astro.props as Props;
+
+// Create Service schema for better local search visibility
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": title,
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Made @ The Local Pottery and Candle Studio",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "111 South Public Square, Upstairs",
+      "addressLocality": "Centerville",
+      "addressRegion": "TN",
+      "postalCode": "37033",
+      "addressCountry": "US"
+    },
+    "telephone": "(931) 729-8459",
+    "email": "made@thelocalplacetn.com"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Centerville"
+  },
+  "availableLanguage": "en",
+  "serviceType": "Art Class"
+};
 ---
 
 <BaseLayout
@@ -19,6 +47,8 @@ const { title, description, price, duration, location = 'Centerville, TN', keywo
   description={description}
   keywords={keywords || `${title}, pottery, candle, ${location}`}
 >
+  <!-- Service Schema Markup for Local Search -->
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <article class="service-page">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
