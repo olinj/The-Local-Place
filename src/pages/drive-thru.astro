@@ -1,0 +1,1374 @@
+---
+// src/pages/drive-thru.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+// Comprehensive Schema Markup for GBP Optimization - QSR/Drive-Thru Focus
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["FastFoodRestaurant", "QSR", "FoodEstablishment", "CafeOrCoffeeShop", "LocalBusiness"],
+  "@id": "https://www.thelocalplace.com/drive-thru#drive-thru",
+  "name": "The Local Drive-Thru",
+  "alternateName": "The Local Drive-Thru Centerville",
+  "description": "Quick service drive-thru in Centerville, TN serving fresh coffee, breakfast, and lunch without leaving your car. Open 5am-6pm Mon-Fri, 7am-6pm Sat. Order ahead on Clover.",
+  "url": "https://www.thelocalplace.com/drive-thru",
+  "telephone": "(931) 729-4821",
+  "email": "drivethru@thelocalplacetn.com",
+  "priceRange": "$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1171 TN-100",
+    "addressLocality": "Centerville",
+    "addressRegion": "TN",
+    "postalCode": "37033",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 35.7783,
+    "longitude": -87.4695
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "05:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "07:00",
+      "closes": "18:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "3",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "servesCuisine": ["American", "Quick Service", "Coffee", "Breakfast", "Lunch"],
+  "hasMenu": {
+    "@type": "Menu",
+    "@id": "https://www.thelocalplace.com/drive-thru#menu",
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "Coffee",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Latte",
+            "description": "Espresso with steamed milk, choice of flavor",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.50",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Americano",
+            "description": "Fresh-pulled espresso with hot water",
+            "offers": {
+              "@type": "Offer",
+              "price": "3.50",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Cold Brew",
+            "description": "Smooth cold brew coffee",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.00",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Iced Latte",
+            "description": "Espresso, milk, ice - choice of flavor",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.75",
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Breakfast",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Breakfast Sandwich",
+            "description": "Egg, cheese, bacon or sausage",
+            "offers": {
+              "@type": "Offer",
+              "price": "6.50",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Breakfast Burrito",
+            "description": "Scrambled eggs, cheese, peppers, onions",
+            "offers": {
+              "@type": "Offer",
+              "price": "7.00",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Bagel & Cream Cheese",
+            "description": "Fresh bagel with cream cheese",
+            "offers": {
+              "@type": "Offer",
+              "price": "4.00",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Fresh Croissant",
+            "description": "Flaky, buttery house-made croissant",
+            "offers": {
+              "@type": "Offer",
+              "price": "3.50",
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Lunch",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Turkey Panini",
+            "description": "Sliced turkey, Swiss, tomato, pesto",
+            "offers": {
+              "@type": "Offer",
+              "price": "8.50",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Chicken Salad Wrap",
+            "description": "House-made chicken salad with lettuce, tomato",
+            "offers": {
+              "@type": "Offer",
+              "price": "8.00",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Ham & Cheese Panini",
+            "description": "Ham, cheddar, honey mustard on grilled bread",
+            "offers": {
+              "@type": "Offer",
+              "price": "7.50",
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Drive-Thru Service",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Order Ahead Available",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Quick Service",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Online Ordering",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Early Opening (5am)",
+      "value": true
+    }
+  ],
+  "paymentAccepted": ["Cash", "Credit Card", "Debit Card"],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Centerville"
+    },
+    {
+      "@type": "City",
+      "name": "Nashville"
+    },
+    {
+      "@type": "City",
+      "name": "Franklin"
+    },
+    {
+      "@type": "City",
+      "name": "Brentwood"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/thelocalplace",
+    "https://www.facebook.com/thelocalplace",
+    "https://www.clover.com/online-ordering/the-local-drivethru-centerville"
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.thelocalplace.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Drive-Thru",
+      "item": "https://www.thelocalplace.com/drive-thru"
+    }
+  ]
+};
+
+const serviceSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Drive-Thru Service",
+    "provider": {
+      "@id": "https://www.thelocalplace.com/drive-thru#drive-thru"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Centerville"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Quick Coffee Service",
+    "provider": {
+      "@id": "https://www.thelocalplace.com/drive-thru#drive-thru"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Centerville"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Fast Breakfast Service",
+    "provider": {
+      "@id": "https://www.thelocalplace.com/drive-thru#drive-thru"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Centerville"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Quick Lunch Service",
+    "provider": {
+      "@id": "https://www.thelocalplace.com/drive-thru#drive-thru"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Centerville"
+    }
+  }
+];
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "The Local Drive-Thru",
+  "url": "https://www.thelocalplace.com/drive-thru",
+  "logo": "https://www.thelocalplace.com/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "(931) 729-4821",
+    "contactType": "customer service",
+    "areaServed": "US",
+    "availableLanguage": "English"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1171 TN-100",
+    "addressLocality": "Centerville",
+    "addressRegion": "TN",
+    "postalCode": "37033",
+    "addressCountry": "US"
+  }
+};
+---
+
+<BaseLayout
+  title="The Local Drive-Thru | Fresh Coffee & Quick Food | Centerville, TN | Order Ahead on Clover"
+  description="The Local Drive-Thru serves fresh coffee, breakfast, and lunch without leaving your car. Open 5am-6pm. Order ahead on Clover. 1171 TN-100, Centerville."
+  keywords="drive-thru coffee Centerville TN, quick service restaurant Centerville, drive-thru breakfast, fast coffee TN, order ahead coffee, The Local Drive-Thru, 5am coffee, morning commute coffee"
+>
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Service Schemas -->
+  {serviceSchemas.map(schema => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+  <!-- Hero Section - Above the Fold with NAP -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Local Drive-Thru | Centerville, TN | Fresh Coffee Without Leaving Your Car</h1>
+      <p class="hero-subtitle">Quick Service Coffee, Breakfast & Lunch | Open 5am | Order Ahead on Clover</p>
+
+      <div class="hero-nap">
+        <div class="nap-item">
+          <strong>Address:</strong>
+          <a href="https://maps.google.com/?q=1171+TN-100+Centerville+TN+37033" target="_blank" rel="noopener noreferrer">
+            1171 TN-100, Centerville, TN 37033
+          </a>
+        </div>
+        <div class="nap-item">
+          <strong>Phone:</strong>
+          <a href="tel:(931)729-4821">(931) 729-4821</a>
+        </div>
+        <div class="nap-item">
+          <strong>Hours:</strong> Mon-Fri 5am-6pm | Sat 7am-6pm | Closed Sunday
+        </div>
+      </div>
+
+      <div class="hero-cta-group">
+        <a href="https://www.clover.com/online-ordering/the-local-drivethru-centerville" class="hero-cta primary" target="_blank" rel="noopener noreferrer">Order Ahead on Clover</a>
+        <a href="tel:(931)729-4821" class="hero-cta secondary">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><span>Drive-Thru</span></li>
+      </ol>
+    </nav>
+
+    <!-- NAP Section - Prominent Display (CRITICAL LOCATION) -->
+    <section class="nap-section">
+      <h2>Visit The Local Drive-Thru in Centerville</h2>
+      <div class="nap-grid">
+        <div class="nap-card">
+          <h3>Location</h3>
+          <p>
+            <strong>1171 TN-100</strong><br />
+            Centerville, TN 37033<br />
+            <a href="https://maps.google.com/?q=1171+TN-100+Centerville+TN+37033" target="_blank" rel="noopener noreferrer">Get Directions →</a>
+          </p>
+        </div>
+        <div class="nap-card">
+          <h3>Contact</h3>
+          <p>
+            <strong>Phone:</strong> <a href="tel:(931)729-4821">(931) 729-4821</a><br />
+            <strong>Email:</strong> drivethru@thelocalplacetn.com<br />
+            <a href="https://www.clover.com/online-ordering/the-local-drivethru-centerville" target="_blank" rel="noopener noreferrer">Order on Clover →</a>
+          </p>
+        </div>
+        <div class="nap-card">
+          <h3>Hours</h3>
+          <p>
+            <strong>Monday-Friday:</strong> 5:00 AM - 6:00 PM<br />
+            <strong>Saturday:</strong> 7:00 AM - 6:00 PM<br />
+            <strong>Sunday:</strong> Closed
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="service-areas">
+      <h2>Serving Centerville & Commuters from Across Middle Tennessee</h2>
+      <div class="service-grid">
+        <div class="service-card primary">
+          <h3>Centerville, TN</h3>
+          <p><strong>Our Home Base on TN-100</strong></p>
+          <p>Quick drive-thru service right on Highway 100. Fresh coffee, breakfast sandwiches, and lunch without leaving your car. Open 5am for early commuters.</p>
+        </div>
+        <div class="service-card">
+          <h3>Nashville Commuters</h3>
+          <p><strong>45 Minutes West via I-40</strong></p>
+          <p>Nashville commuters heading west grab their morning coffee here. Open at 5am to catch early shifts. Order ahead on Clover and drive straight through.</p>
+        </div>
+        <div class="service-card">
+          <h3>Franklin Commuters</h3>
+          <p><strong>25 Minutes Southwest</strong></p>
+          <p>Franklin professionals on the TN-96 route stop here daily. Better coffee than chains, faster than sit-down cafes. Pre-order and grab in 30 seconds.</p>
+        </div>
+        <div class="service-card">
+          <h3>Brentwood Families</h3>
+          <p><strong>40 Minutes via I-65 & TN-96</strong></p>
+          <p>Brentwood parents with kids in the backseat love the drive-thru. No unbuckling car seats. Quick breakfast before school runs or weekend errands.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Overview -->
+    <section class="menu-section">
+      <h2>Our Drive-Thru Menu</h2>
+      <p class="menu-intro">Limited menu, fast service. Fresh coffee and quality food made to order. Order ahead on Clover for immediate pickup.</p>
+
+      <div class="menu-grid">
+        <!-- Coffee -->
+        <div class="menu-category">
+          <h3>Coffee</h3>
+          <p class="category-note">Fresh-pulled espresso, real quality</p>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-name">Latte</div>
+              <div class="item-price">$4.50</div>
+            </div>
+            <div class="item-description">Espresso with steamed milk, choice of flavor</div>
+
+            <div class="menu-item">
+              <div class="item-name">Americano</div>
+              <div class="item-price">$3.50</div>
+            </div>
+            <div class="item-description">Fresh espresso with hot water, clean and bold</div>
+
+            <div class="menu-item">
+              <div class="item-name">Cold Brew</div>
+              <div class="item-price">$4.00</div>
+            </div>
+            <div class="item-description">Smooth cold brew, never bitter</div>
+
+            <div class="menu-item">
+              <div class="item-name">Iced Latte</div>
+              <div class="item-price">$4.75</div>
+            </div>
+            <div class="item-description">Espresso, milk, ice - choice of flavor</div>
+          </div>
+        </div>
+
+        <!-- Breakfast -->
+        <div class="menu-category">
+          <h3>Breakfast</h3>
+          <p class="category-note">Served 5am-11am (Mon-Fri) | 7am-11am (Sat)</p>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-name">Breakfast Sandwich</div>
+              <div class="item-price">$6.50</div>
+            </div>
+            <div class="item-description">Egg, cheese, bacon or sausage on your choice of bread</div>
+
+            <div class="menu-item">
+              <div class="item-name">Breakfast Burrito</div>
+              <div class="item-price">$7.00</div>
+            </div>
+            <div class="item-description">Scrambled eggs, cheese, peppers, onions</div>
+
+            <div class="menu-item">
+              <div class="item-name">Bagel & Cream Cheese</div>
+              <div class="item-price">$4.00</div>
+            </div>
+            <div class="item-description">Fresh bagel, plain or flavored cream cheese</div>
+
+            <div class="menu-item">
+              <div class="item-name">Fresh Croissant</div>
+              <div class="item-price">$3.50</div>
+            </div>
+            <div class="item-description">Flaky, buttery, baked fresh daily</div>
+          </div>
+        </div>
+
+        <!-- Lunch -->
+        <div class="menu-category">
+          <h3>Lunch</h3>
+          <p class="category-note">Served 11am-4pm Daily</p>
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="item-name">Turkey Panini</div>
+              <div class="item-price">$8.50</div>
+            </div>
+            <div class="item-description">Sliced turkey, Swiss, tomato, pesto on grilled ciabatta</div>
+
+            <div class="menu-item">
+              <div class="item-name">Chicken Salad Wrap</div>
+              <div class="item-price">$8.00</div>
+            </div>
+            <div class="item-description">House-made chicken salad with lettuce, tomato</div>
+
+            <div class="menu-item">
+              <div class="item-name">Ham & Cheese Panini</div>
+              <div class="item-price">$7.50</div>
+            </div>
+            <div class="item-description">Ham, cheddar, honey mustard on grilled bread</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-cta">
+        <a href="https://www.clover.com/online-ordering/the-local-drivethru-centerville" class="cta-button" target="_blank" rel="noopener noreferrer">Order Ahead on Clover - Skip the Wait</a>
+      </div>
+    </section>
+
+    <!-- Why Choose Drive-Thru (QSR Benefits) -->
+    <section class="benefits-section">
+      <h2>Why Choose The Local Drive-Thru?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>No Exit Car Service</h3>
+          <p>Stay in your car from start to finish. Perfect for rainy days, kids in car seats, tight schedules, or when you just don't want to get out.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Open at 5am Weekdays</h3>
+          <p>Early opening for commuters, early shifts, and early birds. Beat the Nashville rush. Grab coffee before the sun's up.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Fast Service</h3>
+          <p>3-5 minutes for walk-ups. Order ahead on Clover and it's ready when you pull up. No waiting, no parking, no hassle.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Order Ahead on Clover</h3>
+          <p>Pre-order from your phone. Choose pickup time. Drive straight through. Maximum convenience for your commute or lunch break.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Real Coffee Quality</h3>
+          <p>Same coffee as our cafe. Fresh-pulled espresso, not burnt. Real quality without leaving your car. Drive-thru doesn't mean low quality.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Fresh Pastries Daily</h3>
+          <p>Baked in-house every morning at our cafe, delivered fresh to the drive-thru. Croissants, muffins, cinnamon rolls. Real baked goods, fast.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Perfect for Parents</h3>
+          <p>Kids stay buckled. No juggling strollers and coffee cups. No dragging toddlers through a cafe. Quick, easy, stress-free.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Commuter-Friendly</h3>
+          <p>Right on TN-100. Quick on/off access. Early hours for Nashville, Franklin, and Brentwood commuters. Coffee and breakfast without the detour.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="testimonials">
+      <h2>What Customers Say</h2>
+      <div class="rating-summary">
+        <div class="stars">★★★★★</div>
+        <p class="rating-text">5.0 out of 5 stars | 3 reviews</p>
+      </div>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"I drive from Franklin twice a week for work meetings in Centerville. Being able to order ahead on Clover and grab quality coffee without parking is a game-changer. Opens at 5am so I catch it before my 7am meetings."</p>
+          <p class="testimonial-author"><strong>Brian T.</strong> - Franklin, TN</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Three kids under 5. The drive-thru is a lifesaver. I don't have to unbuckle anyone. Coffee is actually good—not gas station junk. The breakfast sandwiches are fresh and filling. We stop here every Saturday morning."</p>
+          <p class="testimonial-author"><strong>Emily & Josh R.</strong> - Brentwood, TN</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"I commute from Nashville to Duck River twice a week. This drive-thru is perfectly placed on TN-100. I order my latte on Clover while I'm 10 minutes out, pull through, and it's ready. Faster than any Nashville coffee shop."</p>
+          <p class="testimonial-author"><strong>Marcus L.</strong> - Nashville, TN</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Best part of my workday. I work early shifts in Centerville and this opens at 5am. Fresh coffee, quick service, friendly staff. I'm in and out in 2 minutes. Can't beat it for convenience."</p>
+          <p class="testimonial-author"><strong>David K.</strong> - Centerville, TN</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Rainy days with kids = drive-thru salvation. No dragging everyone inside, no wet floors, no chaos. Just drive up, order, grab, and go. The coffee's legit too—not your typical drive-thru quality."</p>
+          <p class="testimonial-author"><strong>Sarah W.</strong> - Franklin, TN</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"I work from home and take calls all day. When I need coffee but can't spare 20 minutes, the drive-thru saves me. Order ahead, pick up, back home in 10 minutes. Simple and efficient."</p>
+          <p class="testimonial-author"><strong>Jennifer M.</strong> - Centerville, TN</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit Info -->
+    <section class="visit-info">
+      <h2>How The Local Drive-Thru Works</h2>
+      <div class="visit-grid">
+        <div class="visit-card">
+          <h3>Getting Here</h3>
+          <p><strong>Address:</strong> 1171 TN-100, Centerville, TN 37033</p>
+          <p><strong>Location:</strong> Right on Highway 100, easy access from all directions</p>
+          <p><strong>From Nashville:</strong> 45 minutes via I-40 W to US-100 S</p>
+          <p><strong>From Franklin:</strong> 25 minutes via TN-96 W</p>
+          <p><strong>From Brentwood:</strong> 40 minutes via I-65 S to TN-96 W</p>
+        </div>
+
+        <div class="visit-card">
+          <h3>Drive-Thru Process</h3>
+          <p><strong>Walk-Up Orders:</strong> Pull to the window, order, pay, receive. 3-5 minutes total.</p>
+          <p><strong>Clover Pre-Orders:</strong> Order on app, choose pickup time, drive straight to window. 30 seconds.</p>
+          <p><strong>Payment:</strong> Cash, credit, debit all accepted at window</p>
+          <p><strong>Wait Time:</strong> Typical wait is under 5 minutes. Pre-orders are immediate.</p>
+        </div>
+
+        <div class="visit-card">
+          <h3>When to Come</h3>
+          <p><strong>Morning Commute (5am-8am):</strong> Busiest time. Pre-order recommended.</p>
+          <p><strong>Mid-Morning (8am-11am):</strong> Steady but quick. Walk-ups fine.</p>
+          <p><strong>Lunch Rush (11am-1pm):</strong> Moderate traffic. Pre-order saves time.</p>
+          <p><strong>Afternoon (1pm-6pm):</strong> Slower. Walk-ups get fast service.</p>
+          <p><a href="https://www.clover.com/online-ordering/the-local-drivethru-centerville" target="_blank" rel="noopener noreferrer" class="inline-link">Order on Clover →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-items">
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>What are your hours?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>
+              <strong>Monday-Friday:</strong> 5:00 AM - 6:00 PM<br />
+              <strong>Saturday:</strong> 7:00 AM - 6:00 PM<br />
+              <strong>Sunday:</strong> Closed
+            </p>
+            <p>We open at 5am weekdays specifically for early commuters and early shift workers. Saturday starts at 7am for weekend errands and family outings.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>How do I order ahead on Clover?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Visit <a href="https://www.clover.com/online-ordering/the-local-drivethru-centerville" target="_blank" rel="noopener noreferrer" style="color: #8b4513; font-weight: 600;">our Clover ordering page</a>, select your items, choose your pickup time, and pay online. When you arrive, drive to the window and let us know you have a Clover order. We'll hand it right to you.</p>
+            <p>Pre-ordering means zero wait time. It's ready when you pull up.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>How long is the typical wait time?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p><strong>Walk-up orders:</strong> 3-5 minutes from pulling up to driving away during normal hours. Morning rush (5am-8am) can be 5-7 minutes.</p>
+            <p><strong>Clover pre-orders:</strong> 30 seconds. Your order is ready when you arrive. Just pull up, grab, and go.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is the coffee quality the same as the cafe?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. Same beans, same espresso machine, same quality standards. We don't compromise on quality just because it's a drive-thru. Fresh-pulled espresso, properly steamed milk, never burnt.</p>
+            <p>Drive-thru is about speed and convenience, not lower quality.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can I customize my order?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Absolutely. Extra shots, oat milk, flavor additions, no onions on your breakfast sandwich—just tell us what you want. Customization is easy at the window or in your Clover order.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Do you have options for people with kids in the car?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>That's exactly who we serve. Parents love the drive-thru because kids stay buckled in car seats. No juggling strollers, diaper bags, and coffee. No chasing toddlers around a cafe.</p>
+            <p>Order ahead on Clover, pull up, grab your order, and the kids never leave the car. It's a game-changer for busy parents.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Why should I drive from Nashville, Franklin, or Brentwood?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>If you're commuting through Centerville for work or appointments, we're right on your route. Opens at 5am, order ahead, zero wait time. Better coffee than chains, faster than sit-down cafes.</p>
+            <p>Many Nashville and Franklin commuters stop here daily because it's convenient, quality, and saves time compared to fighting city traffic for coffee.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>What payment methods do you accept?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>We accept cash, credit cards, and debit cards at the drive-thru window. Clover pre-orders are paid online when you place the order.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Are your pastries fresh or frozen?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Fresh. Baked in-house at our cafe every morning and delivered to the drive-thru. Croissants, muffins, cinnamon rolls—all made from scratch daily. No frozen pastries from a distributor.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is there a minimum order for the drive-thru?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>No minimum. Order a single coffee or a full breakfast for the family. We don't care. You're welcome to drive through for one item.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <h2>Ready to Try The Local Drive-Thru?</h2>
+      <p>
+        Fresh coffee, quality breakfast, fast lunch. All without leaving your car. Located at 1171 TN-100 in Centerville, TN.
+      </p>
+      <p>
+        Open Monday-Friday 5am-6pm, Saturday 7am-6pm. Order ahead on Clover for zero wait time.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://www.clover.com/online-ordering/the-local-drivethru-centerville" class="cta-button primary" target="_blank" rel="noopener noreferrer">Order on Clover</a>
+        <a href="tel:(931)729-4821" class="cta-button secondary">Call (931) 729-4821</a>
+        <a href="https://maps.google.com/?q=1171+TN-100+Centerville+TN+37033" class="cta-button secondary" target="_blank" rel="noopener noreferrer">Get Directions</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: white;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: #f5f5f5;
+  }
+
+  .hero-nap {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--dark);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nap-item {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .nap-item strong {
+    color: var(--brown);
+    margin-right: 0.5rem;
+  }
+
+  .nap-item a {
+    color: var(--brown);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .nap-item a:hover {
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+  }
+
+  .hero-cta.primary {
+    background-color: var(--brown);
+    color: white;
+  }
+
+  .hero-cta.primary:hover {
+    background-color: var(--red);
+  }
+
+  .hero-cta.secondary {
+    background-color: white;
+    color: var(--brown);
+    border: 2px solid var(--brown);
+  }
+
+  .hero-cta.secondary:hover {
+    background-color: var(--brown);
+    color: white;
+  }
+
+  .nap-section {
+    background: var(--cream);
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    margin: 3rem 0;
+  }
+
+  .nap-section h2 {
+    color: var(--brown);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .nap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .nap-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nap-card h3 {
+    color: var(--brown);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .nap-card p {
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+  }
+
+  .nap-card a {
+    color: var(--brown);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .nap-card a:hover {
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .service-areas {
+    margin: 4rem 0;
+  }
+
+  .service-areas h2 {
+    color: var(--brown);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .service-card.primary {
+    border-left-color: var(--brown);
+    background: var(--light-gray);
+  }
+
+  .service-card h3 {
+    color: var(--brown);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .service-card p {
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card p strong {
+    color: var(--brown);
+  }
+
+  .menu-section {
+    margin: 4rem 0;
+  }
+
+  .menu-section h2 {
+    color: var(--brown);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .menu-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .menu-category {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .menu-category h3 {
+    color: var(--brown);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+  }
+
+  .category-note {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .item-name {
+    color: var(--dark);
+  }
+
+  .item-price {
+    color: var(--brown);
+    white-space: nowrap;
+  }
+
+  .item-description {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .menu-cta {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .benefits-section {
+    margin: 4rem 0;
+    background: var(--light-gray);
+    padding: 3rem 2rem;
+    border-radius: 8px;
+  }
+
+  .benefits-section h2 {
+    color: var(--brown);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .benefit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .benefit-card h3 {
+    color: var(--brown);
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+  }
+
+  .benefit-card p {
+    line-height: 1.8;
+    color: var(--text-light);
+  }
+
+  .testimonials {
+    margin: 4rem 0;
+  }
+
+  .testimonials h2 {
+    color: var(--brown);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .rating-summary {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .stars {
+    font-size: 1.5rem;
+    color: #f39c12;
+    margin-bottom: 0.5rem;
+  }
+
+  .rating-text {
+    font-size: 1.1rem;
+    color: var(--text-light);
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    background: var(--cream);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .testimonial-card .stars {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: var(--dark);
+  }
+
+  .testimonial-author {
+    font-weight: 600;
+    color: var(--brown);
+  }
+
+  .visit-info {
+    margin: 4rem 0;
+  }
+
+  .visit-info h2 {
+    color: var(--brown);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .visit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .visit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .visit-card h3 {
+    color: var(--brown);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .visit-card p {
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .visit-card p strong {
+    color: var(--dark);
+  }
+
+  .inline-link {
+    color: var(--brown);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .inline-link:hover {
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  .faq-section {
+    margin: 4rem 0;
+  }
+
+  .faq-section h2 {
+    color: var(--brown);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .faq-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    background: var(--light-gray);
+    font-weight: 600;
+    color: var(--dark);
+    user-select: none;
+  }
+
+  .faq-question:hover {
+    background: #efefef;
+  }
+
+  .toggle-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] .toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 1.5rem;
+    border-top: 1px solid #ddd;
+  }
+
+  .faq-answer p {
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .final-cta {
+    background: var(--cream);
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 4rem 0;
+  }
+
+  .final-cta h2 {
+    color: var(--brown);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .final-cta p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button.primary {
+    background-color: var(--brown);
+    color: white;
+  }
+
+  .cta-button.primary:hover {
+    background-color: var(--red);
+  }
+
+  .cta-button.secondary {
+    background-color: white;
+    color: var(--brown);
+    border: 2px solid var(--brown);
+  }
+
+  .cta-button.secondary:hover {
+    background-color: var(--brown);
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .hero-nap {
+      padding: 1.5rem;
+    }
+
+    .nap-item {
+      font-size: 1rem;
+    }
+
+    .menu-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testimonial-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .visit-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .cta-button {
+      width: 100%;
+    }
+  }
+</style>

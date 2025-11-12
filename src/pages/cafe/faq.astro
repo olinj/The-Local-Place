@@ -1,0 +1,468 @@
+---
+// src/pages/cafe/faq.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="FAQ | The Local Place Cafe - Hours, Ordering, Menu & More"
+  description="Frequently asked questions about The Local Place Cafe. Hours, ordering, menu, dietary options, seating, parking, and more. Get answers before you visit."
+  keywords="cafe FAQ, hours, ordering, menu questions, dietary options, Centerville cafe"
+>
+  <!-- Schema markup placeholder for FAQPage -->
+  <!-- TODO: Add JSON-LD schema for FAQ structured data -->
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Frequently Asked Questions</h1>
+      <p>Everything You Need to Know Before You Visit</p>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/cafe">Cafe</a></li>
+        <li><span>FAQ</span></li>
+      </ol>
+    </nav>
+
+    <section class="content-section">
+      <h2>Hours & Location</h2>
+      <div class="faq-items">
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>What are your hours?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>
+              <strong>Monday-Friday:</strong> 6 AM - 6 PM<br />
+              <strong>Saturday:</strong> 9 AM - 6 PM<br />
+              <strong>Sunday:</strong> Closed
+            </p>
+            <p>We open at 6am on weekdays because we know people need coffee early. Saturday we open at 9am. We're closed Sundays.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Where are you located?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>
+              111 South Public Square<br />
+              Centerville, TN 37033
+            </p>
+            <p>We're right on the square in downtown Centerville. Free parking available nearby.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is there parking?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. Free parking around the square. Street parking and public lots are available.</p>
+          </div>
+        </details>
+      </div>
+
+      <h2>Ordering & Pickup</h2>
+      <div class="faq-items">
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can I order online?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>
+              Yes. Order through Clover and pick it up when it's ready. No waiting in line, no awkward small talk before caffeine. Just walk in, grab it, go.
+            </p>
+            <p><a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" target="_blank" rel="noopener noreferrer" style="color: #8b4513; font-weight: 600;">Order on Clover →</a></p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>How long does it take to prepare my order?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Usually 5-10 minutes, depending on what you order. Coffee drinks are quick. Paninis take a bit longer because we press them hot. Online orders let you know when it's ready.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Do you offer delivery?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Not currently. We're pickup and dine-in only. Order online and pick it up fresh.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can I call in an order?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. Call (931) 729-3481 and we'll take your order over the phone. But online ordering is faster and easier.</p>
+          </div>
+        </details>
+      </div>
+
+      <h2>Menu & Food</h2>
+      <div class="faq-items">
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>What do you serve?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>
+              <strong>Coffee:</strong> Espresso, lattes, cappuccinos, cold brew, iced coffee<br />
+              <strong>Breakfast:</strong> Sandwiches, bagels, breakfast plates (6am weekdays)<br />
+              <strong>Lunch:</strong> Paninis, wraps, salads, soups<br />
+              <strong>Pastries:</strong> House-made croissants, muffins, scones, cinnamon rolls<br />
+              <strong>Ice Cream:</strong> Homemade, rotating flavors<br />
+              <strong>Beverages:</strong> Smoothies, iced drinks, specialty drinks
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Do you have vegetarian or vegan options?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. We have veggie wraps, salads, avocado toast, and customizable sandwiches. For vegan options, ask about dairy-free milk for coffee and specific menu items we can modify.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Do you accommodate dietary restrictions?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>We'll do what we can. We can't guarantee zero cross-contamination for severe allergies, but we can customize most orders. Just ask when you order.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is your ice cream made in-house?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. We make it here. Real cream, real sugar, real vanilla. Rotating flavors, small batches, fresh and creamy.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can I customize my order?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Absolutely. Different milk? Extra bacon? No cheese? Different bread? Just ask. We make it how you want it.</p>
+          </div>
+        </details>
+      </div>
+
+      <h2>Seating & Atmosphere</h2>
+      <div class="faq-items">
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Do you have seating?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. We have tables, chairs, and comfortable seating. Come in, sit down, stay awhile. We're not rushing you out.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is there Wi-Fi?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. Free Wi-Fi. Bring your laptop, work remote, stay as long as you want. Just keep ordering coffee.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can I work here for a few hours?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. We're not one of those places that kicks you out after 30 minutes. Set up your laptop, order a coffee, get work done. Just be respectful during busy times.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Are you kid-friendly?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. We serve ice cream, smoothies, and breakfast—kids love this place. Families are welcome.</p>
+          </div>
+        </details>
+      </div>
+
+      <h2>Payment & Pricing</h2>
+      <div class="faq-items">
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>What payment methods do you accept?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Cash, credit cards, debit cards. We use Clover for processing, so most cards work.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>How much do things cost?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>
+              Coffee: $2-6<br />
+              Breakfast: $5-10<br />
+              Lunch: $7-12<br />
+              Pastries: $3-4<br />
+              Ice Cream: $4-7<br />
+              Smoothies: $5-8
+            </p>
+          </div>
+        </details>
+      </div>
+
+      <h2>Still Have Questions?</h2>
+      <div class="contact-box">
+        <p>Call us at <a href="tel:(931)729-3481">(931) 729-3481</a> or stop by and ask. We're here to help.</p>
+      </div>
+
+      <div class="cta-box">
+        <h3>Ready to Visit?</h3>
+        <p>Order online or come see us at 111 South Public Square.</p>
+        <a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" class="cta-button">Order on Clover</a>
+      </div>
+    </section>
+
+    <section class="location-info">
+      <h2>Visit The Local Place Cafe</h2>
+      <div class="info-grid">
+        <div class="info-block">
+          <h3>Hours</h3>
+          <p>
+            <strong>Monday-Friday:</strong> 6 AM - 6 PM<br />
+            <strong>Saturday:</strong> 9 AM - 6 PM<br />
+            <strong>Sunday:</strong> Closed
+          </p>
+        </div>
+        <div class="info-block">
+          <h3>Location</h3>
+          <p>
+            111 South Public Square<br />
+            Centerville, TN 37033<br />
+            <strong>Phone:</strong> <a href="tel:(931)729-3481">(931) 729-3481</a>
+          </p>
+        </div>
+        <div class="info-block">
+          <h3>Order Online</h3>
+          <p>
+            <a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" target="_blank" rel="noopener noreferrer">Order on Clover →</a><br />
+            Skip the line. Pick up fresh.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    color: white;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .faq-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .faq-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    background: var(--light-gray);
+    font-weight: 600;
+    color: var(--dark);
+    user-select: none;
+  }
+
+  .faq-question:hover {
+    background: #efefef;
+  }
+
+  .toggle-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] .toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 1.5rem;
+    border-top: 1px solid #ddd;
+  }
+
+  .faq-answer p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .faq-answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  .contact-box {
+    background: var(--cream);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 2rem 0;
+    border-left: 4px solid #8b4513;
+  }
+
+  .contact-box p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .contact-box a {
+    color: #8b4513;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .contact-box a:hover {
+    color: var(--red);
+  }
+
+  .cta-box {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .cta-box h3 {
+    margin-top: 0;
+    color: var(--dark);
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #8b4513;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #6b3410;
+  }
+
+  .location-info {
+    margin-top: 3rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .info-block {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #8b4513;
+  }
+
+  .info-block h3 {
+    margin-top: 0;
+    color: var(--dark);
+  }
+
+  .info-block p {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+  }
+
+  .info-block a {
+    color: var(--brown);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .info-block a:hover {
+    color: var(--red);
+  }
+
+  @media (max-width: 768px) {
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

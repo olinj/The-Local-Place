@@ -1,0 +1,336 @@
+---
+// src/pages/cafe/index.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+
+const cafeServices = [
+  {
+    title: 'Specialty Coffee Drinks',
+    description: 'From rich espresso to creamy lattes. We craft every cup like it matters.',
+    price: '$2-6',
+    href: '/cafe/specialty-coffee',
+    bgClass: 'coffee-bg',
+  },
+  {
+    title: 'Fresh Pastries & Baked Goods',
+    description: 'House-made and locally sourced. Your breakfast doesn\'t have to be boring.',
+    price: '$3-8',
+    href: '/cafe/pastries-baked-goods',
+    bgClass: 'pastry-bg',
+  },
+  {
+    title: 'Breakfast Items',
+    description: 'Breakfast sandwiches, bagels, and breakfast plates that actually fill you up.',
+    price: '$5-10',
+    href: '/cafe/breakfast',
+    bgClass: 'breakfast-bg',
+  },
+  {
+    title: 'Lunch Menu',
+    description: 'Paninis, salads, wraps, and soups. Fresh, made-to-order lunch options.',
+    price: '$7-12',
+    href: '/cafe/lunch',
+    bgClass: 'lunch-bg',
+  },
+  {
+    title: 'Homemade Ice Cream',
+    description: 'Creamy, rich ice cream made fresh. Perfect year-round treat.',
+    price: '$4-7',
+    href: '/cafe/ice-cream',
+    bgClass: 'icecream-bg',
+  },
+  {
+    title: 'Smoothies & Beverages',
+    description: 'Fresh smoothies, iced drinks, and specialty beverages.',
+    price: '$4-8',
+    href: '/cafe/smoothies-beverages',
+    bgClass: 'beverage-bg',
+  },
+];
+
+const featuredItems = [
+  {
+    title: 'Morning Espresso',
+    description: 'Start your day right. Rich, smooth espresso shots that kick.',
+    price: '$2-4',
+    href: '/cafe/specialty-coffee',
+    bgClass: 'coffee-bg',
+  },
+  {
+    title: 'Afternoon Ice Cream Break',
+    description: 'Homemade ice cream in rotating flavors. Brain freeze never tasted this good.',
+    price: '$4-7',
+    href: '/cafe/ice-cream',
+    bgClass: 'icecream-bg',
+  },
+  {
+    title: 'Lunch Panini',
+    description: 'Hot, pressed, delicious. Grab one on your way back to work.',
+    price: '$8-11',
+    href: '/cafe/lunch',
+    bgClass: 'lunch-bg',
+  },
+  {
+    title: 'Fresh Pastry + Coffee',
+    description: 'The combo that makes mornings better. Pair a pastry with your drink.',
+    price: '$5-9',
+    href: '/cafe/pastries-baked-goods',
+    bgClass: 'pastry-bg',
+  },
+];
+---
+
+<BaseLayout
+  title="Cafe in Centerville, TN | Coffee, Food & Ice Cream | The Local Place"
+  description="The Local Place Cafe in Centerville serves specialty coffee, fresh pastries, breakfast, lunch, and homemade ice cream. Order online or stop by—open 6am daily."
+  keywords="cafe Centerville TN, coffee shop, breakfast, lunch, ice cream, specialty coffee, local cafe"
+>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Local Place Cafe</h1>
+      <p>Coffee, Food & Homemade Ice Cream in Centerville</p>
+      <a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" class="hero-cta">Order Online</a>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><span>Cafe</span></li>
+      </ol>
+    </nav>
+
+    <section class="category-intro">
+      <h2>Cafe in Centerville, TN</h2>
+      <p>
+        You want coffee that tastes like someone actually cared. Food that fills you up, not just kills time. Ice cream that melts on your tongue. We open at 6am because we know you need caffeine before the world does. We're here six days a week, turning basic breakfast and lunch into something worth thinking about.
+      </p>
+    </section>
+
+    <section class="services-section">
+      <h2>What We Offer</h2>
+      <div class="services-grid">
+        {cafeServices.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </section>
+
+    <section class="why-cafe">
+      <h2>Why Choose The Local Place Cafe</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>☕ Specialty Coffee</h3>
+          <p>Every espresso shot pulled with care. No burnt coffee, no shortcuts.</p>
+        </div>
+        <div class="why-item">
+          <h3>🥐 House-Made Pastries</h3>
+          <p>Fresh daily. You can taste the difference between real and store-bought.</p>
+        </div>
+        <div class="why-item">
+          <h3>🍦 Homemade Ice Cream</h3>
+          <p>Creamy, rich, rotating flavors. This isn't soft-serve. This is real ice cream.</p>
+        </div>
+        <div class="why-item">
+          <h3>🥪 Fresh Lunch</h3>
+          <p>Made to order. Paninis grilled hot, salads fresh, nothing sitting around.</p>
+        </div>
+        <div class="why-item">
+          <h3>📱 Order Online</h3>
+          <p>Ready when you arrive. Use Clover to skip the line.</p>
+        </div>
+        <div class="why-item">
+          <h3>🤝 Community Hub</h3>
+          <p>Comfortable seating, Wi-Fi, locals who know your order. Come for coffee, stay for the vibe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-items">
+      <h2>Customer Favorites</h2>
+      <div class="services-grid">
+        {featuredItems.map((item) => (
+          <ServiceCard {...item} />
+        ))}
+      </div>
+    </section>
+
+    <section class="cafe-info">
+      <h2>Hours & Location</h2>
+      <div class="info-grid">
+        <div class="info-block">
+          <h3>Hours</h3>
+          <p>
+            <strong>Monday-Friday:</strong> 6 AM - 6 PM<br />
+            <strong>Saturday:</strong> 9 AM - 6 PM<br />
+            <strong>Sunday:</strong> Closed
+          </p>
+        </div>
+        <div class="info-block">
+          <h3>Location</h3>
+          <p>
+            111 South Public Square<br />
+            Centerville, TN 37033<br />
+            <strong>Phone:</strong> <a href="tel:(931)729-3481">(931) 729-3481</a>
+          </p>
+        </div>
+        <div class="info-block">
+          <h3>Order Online</h3>
+          <p>
+            <a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" target="_blank" rel="noopener noreferrer">Order on Clover →</a><br />
+            Skip the line. Pick up fresh.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2>What Locals Say</h2>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <p>"I come here every morning for my latte. The barista knows my order, and the pastries are actually fresh. This is my favorite place in Centerville."</p>
+          <p><strong>- Michael (Regular)</strong></p>
+        </div>
+        <div class="testimonial-card">
+          <p>"The homemade ice cream is insane. I've tried the vanilla bean, chocolate, and salted caramel—all are better than anything you'd buy at a chain."</p>
+          <p><strong>- Sarah & Kids</strong></p>
+        </div>
+        <div class="testimonial-card">
+          <p>"Lunch paninis are my go-to. Hot, pressed, delicious. Order online and it's ready when I walk in. Perfect for lunch break."</p>
+          <p><strong>- James (Professional)</strong></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .why-item {
+    padding: 1.5rem;
+    background: var(--light-gray);
+    border-radius: 8px;
+  }
+
+  .why-item h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+  }
+
+  .why-item p {
+    margin-bottom: 0;
+    color: var(--text-light);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .info-block {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #8b4513;
+  }
+
+  .info-block h3 {
+    margin-top: 0;
+    color: var(--dark);
+  }
+
+  .info-block p {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+  }
+
+  .info-block a {
+    color: var(--brown);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .info-block a:hover {
+    color: var(--red);
+  }
+
+  .testimonial-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .testimonial-card {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #8b4513;
+  }
+
+  .testimonial-card p {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+  }
+
+  .testimonial-card p:first-child {
+    font-style: italic;
+    color: var(--text-light);
+  }
+
+  .testimonial-card p:last-child {
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .featured-items {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--light-gray);
+  }
+
+  /* Background colors for menu items */
+  .coffee-bg {
+    background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+  }
+
+  .pastry-bg {
+    background: linear-gradient(135deg, #f4d4a8 0%, #d9a574 100%);
+  }
+
+  .breakfast-bg {
+    background: linear-gradient(135deg, #ffa07a 0%, #ff8c42 100%);
+  }
+
+  .lunch-bg {
+    background: linear-gradient(135deg, #90ee90 0%, #7cb342 100%);
+  }
+
+  .icecream-bg {
+    background: linear-gradient(135deg, #a8d8d8 0%, #7ab8ba 100%);
+  }
+
+  .beverage-bg {
+    background: linear-gradient(135deg, #dda15e 0%, #c1666b 100%);
+  }
+
+  @media (max-width: 768px) {
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,380 @@
+---
+// src/pages/drive-thru/index.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const services = [
+  {
+    title: 'Quick Coffee',
+    description: 'Your caffeine fix without leaving the car. Fresh-pulled espresso drinks.',
+    price: '$2-6',
+    href: '/drive-thru/menu',
+    bgClass: 'coffee-bg',
+  },
+  {
+    title: 'Breakfast Grab & Go',
+    description: 'Breakfast sandwiches and pastries. Eat on the way to work.',
+    price: '$4-8',
+    href: '/drive-thru/menu',
+    bgClass: 'breakfast-bg',
+  },
+  {
+    title: 'Lunch in a Hurry',
+    description: 'Quick lunch items. No need to park, no need to go inside.',
+    price: '$6-11',
+    href: '/drive-thru/menu',
+    bgClass: 'lunch-bg',
+  },
+  {
+    title: 'Afternoon Pick-Me-Up',
+    description: 'Coffee, smoothie, or snack when you need it. Drive-thru fast.',
+    price: '$3-7',
+    href: '/drive-thru/menu',
+    bgClass: 'beverage-bg',
+  },
+];
+---
+
+<BaseLayout
+  title="Drive-Thru Coffee & Food | The Local Drive-Thru, Centerville TN"
+  description="The Local Drive-Thru in Centerville serves coffee, breakfast, and lunch—all without leaving your car. Order online or drive through. Open 5am-6pm weekdays."
+  keywords="drive thru, drive through coffee, quick breakfast, drive thru food, Centerville"
+>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Local Drive-Thru</h1>
+      <p>Coffee, Food & Convenience—Without Leaving Your Car</p>
+      <a href="https://www.clover.com/online-ordering/the-local-drivethru-centerville" class="hero-cta">Order Ahead</a>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><span>Drive-Thru</span></li>
+      </ol>
+    </nav>
+
+    <section class="intro">
+      <h2>Drive-Thru in Centerville, TN</h2>
+      <p>
+        You don't want to park. You don't want to go inside. You want your coffee and breakfast in under five minutes, and you want to stay in your car. That's why we're here. Early morning? Open at 5am. On a lunch run? We've got quick items. No fuss. No waiting for your turn inside. Just roll up, order, and go.
+      </p>
+    </section>
+
+    <section class="services-section">
+      <h2>What You Get</h2>
+      <div class="services-grid">
+        {services.map((service) => (
+          <div class="service-card">
+            <div class={`service-image ${service.bgClass}`} role="img" aria-label={service.title}></div>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+            <span class="price">{service.price}</span>
+            <a href={service.href} class="service-link">View Menu →</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="why-drive-thru">
+      <h2>Why Choose The Local Drive-Thru</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>🚗 Stay in Your Car</h3>
+          <p>You're busy. Roll up, order, grab your coffee, and go. No parking hassles.</p>
+        </div>
+        <div class="why-item">
+          <h3>⏰ Super Fast</h3>
+          <p>Limited menu means we know exactly what we're doing. Your order is ready quick.</p>
+        </div>
+        <div class="why-item">
+          <h3>🌅 Early Opening</h3>
+          <p>Open at 5am on weekdays. We're here before your alarm goes off.</p>
+        </div>
+        <div class="why-item">
+          <h3>📱 Order Ahead</h3>
+          <p>Order online. Just drive through and grab it. Zero wait time.</p>
+        </div>
+        <div class="why-item">
+          <h3>☕ Fresh Coffee</h3>
+          <p>Same quality coffee as inside. Just easier to get.</p>
+        </div>
+        <div class="why-item">
+          <h3>💪 Convenience</h3>
+          <p>Rain, snow, kids in the backseat—stay comfortable in your car.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-highlight">
+      <h2>Popular Items</h2>
+      <ul style="margin-left: 1.5rem; margin-bottom: 2rem;">
+        <li>Specialty coffee drinks (espresso, lattes, cappuccinos)</li>
+        <li>Breakfast sandwiches</li>
+        <li>Pastries and muffins</li>
+        <li>Quick lunch options</li>
+        <li>Smoothies and cold drinks</li>
+        <li>Snacks and more</li>
+      </ul>
+      <p style="text-align: center; margin-top: 2rem;">
+        <a href="/drive-thru/menu" class="cta-button">See Full Menu</a>
+      </p>
+    </section>
+
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <ol style="margin-left: 1.5rem; margin-bottom: 2rem; line-height: 1.8;">
+        <li><strong>Order Ahead (Optional):</strong> Use Clover to place your order before you arrive</li>
+        <li><strong>Drive Up:</strong> Pull up to the drive-thru window</li>
+        <li><strong>Order or Pick Up:</strong> Tell us your order, or we hand you your pre-ordered items</li>
+        <li><strong>Pay:</strong> Quick card or cash payment</li>
+        <li><strong>Go:</strong> Take your coffee and food, and hit the road</li>
+      </ol>
+    </section>
+
+    <section class="testimonials">
+      <h2>What Customers Say</h2>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <p>"Perfect for my morning commute. I order ahead and it's ready when I roll up. In and out in two minutes. Love it."</p>
+          <p><strong>- Tom (Commuter)</strong></p>
+        </div>
+        <div class="testimonial-card">
+          <p>"Kids in the car, it's raining, I don't want to drag them inside. Drive-thru saves me every morning."</p>
+          <p><strong>- Jennifer (Parent)</strong></p>
+        </div>
+        <div class="testimonial-card">
+          <p>"Open at 5am when I'm heading to work. My lunch run goes through here too. Super convenient."</p>
+          <p><strong>- Michael (Professional)</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="location-info">
+      <h2>Hours & Location</h2>
+      <div class="info-grid">
+        <div class="info-block">
+          <h3>Hours</h3>
+          <p>
+            <strong>Monday-Friday:</strong> 5 AM - 6 PM<br />
+            <strong>Saturday:</strong> 7 AM - 6 PM<br />
+            <strong>Sunday:</strong> Closed
+          </p>
+        </div>
+        <div class="info-block">
+          <h3>Location</h3>
+          <p>
+            1171 TN-100<br />
+            Centerville, TN 37033<br />
+            <strong>Phone:</strong> <a href="tel:(931)729-4821">(931) 729-4821</a>
+          </p>
+        </div>
+        <div class="info-block">
+          <h3>Order Ahead</h3>
+          <p>
+            <a href="https://www.clover.com/online-ordering/the-local-drivethru-centerville" target="_blank" rel="noopener noreferrer">Order on Clover →</a><br />
+            Skip the line. It'll be ready.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .service-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+  }
+
+  .service-image {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .service-card h3 {
+    padding: 1rem 1.5rem 0;
+    margin: 0;
+    color: var(--dark);
+    font-size: 1.1rem;
+  }
+
+  .service-card p {
+    padding: 0.5rem 1.5rem;
+    margin: 0;
+    color: var(--text-light);
+    flex-grow: 1;
+  }
+
+  .price {
+    display: block;
+    padding: 0 1.5rem;
+    color: #8b4513;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .service-link {
+    padding: 1rem 1.5rem;
+    color: #8b4513;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .service-link:hover {
+    color: var(--red);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .why-item {
+    padding: 1.5rem;
+    background: var(--light-gray);
+    border-radius: 8px;
+  }
+
+  .why-item h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+  }
+
+  .why-item p {
+    margin-bottom: 0;
+    color: var(--text-light);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .info-block {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #8b4513;
+  }
+
+  .info-block h3 {
+    margin-top: 0;
+    color: var(--dark);
+  }
+
+  .info-block p {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+  }
+
+  .info-block a {
+    color: #8b4513;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .info-block a:hover {
+    color: var(--red);
+  }
+
+  .testimonial-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .testimonial-card {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #8b4513;
+  }
+
+  .testimonial-card p {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+  }
+
+  .testimonial-card p:first-child {
+    font-style: italic;
+    color: var(--text-light);
+  }
+
+  .testimonial-card p:last-child {
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #8b4513;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #6b3410;
+  }
+
+  .coffee-bg {
+    background: linear-gradient(135deg, #d4a574 0%, #8b6f47 100%);
+  }
+
+  .breakfast-bg {
+    background: linear-gradient(135deg, #ffa07a 0%, #ff8c42 100%);
+  }
+
+  .lunch-bg {
+    background: linear-gradient(135deg, #90ee90 0%, #7cb342 100%);
+  }
+
+  .beverage-bg {
+    background: linear-gradient(135deg, #dda15e 0%, #c1666b 100%);
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

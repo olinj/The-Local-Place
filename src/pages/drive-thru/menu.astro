@@ -1,0 +1,256 @@
+---
+// src/pages/drive-thru/menu.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Drive-Thru Menu | The Local Drive-Thru, Centerville TN"
+  description="The Local Drive-Thru menu features coffee, breakfast items, lunch options, and snacks. Quick, easy, without leaving your car. Order ahead on Clover."
+  keywords="drive thru menu, fast breakfast, quick lunch, drive through coffee"
+>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Local Drive-Thru Menu</h1>
+      <p>Quick Items. Limited Menu. Perfect Execution.</p>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/drive-thru">Drive-Thru</a></li>
+        <li><span>Menu</span></li>
+      </ol>
+    </nav>
+
+    <section class="intro">
+      <h2>Our Limited Menu</h2>
+      <p>
+        We don't do everything. We do a few things really well. Fresh coffee. Quick breakfast. Fast lunch. That's it. When your menu is limited, you can master every item. No compromises. Just good food, fast.
+      </p>
+    </section>
+
+    <section class="menu-section">
+      <h3>Coffee & Beverages</h3>
+      <div class="menu-items">
+        <div class="menu-item">
+          <h4>Espresso</h4>
+          <p>Single or double. Fresh pulled.</p>
+          <span class="price">$2-3</span>
+        </div>
+        <div class="menu-item">
+          <h4>Cappuccino</h4>
+          <p>Espresso and steamed milk. Just right.</p>
+          <span class="price">$4</span>
+        </div>
+        <div class="menu-item">
+          <h4>Latte</h4>
+          <p>Smooth, creamy, delicious.</p>
+          <span class="price">$4</span>
+        </div>
+        <div class="menu-item">
+          <h4>Americano</h4>
+          <p>Espresso with hot water. Bold.</p>
+          <span class="price">$3</span>
+        </div>
+        <div class="menu-item">
+          <h4>Cold Brew</h4>
+          <p>Smooth and refreshing.</p>
+          <span class="price">$3-4</span>
+        </div>
+        <div class="menu-item">
+          <h4>Iced Latte</h4>
+          <p>Cold milk and espresso. Perfect.</p>
+          <span class="price">$4</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <h3>Breakfast</h3>
+      <div class="menu-items">
+        <div class="menu-item">
+          <h4>Breakfast Sandwich</h4>
+          <p>Egg, cheese, meat. On a roll. Hot and fresh.</p>
+          <span class="price">$5-6</span>
+        </div>
+        <div class="menu-item">
+          <h4>Croissant</h4>
+          <p>Buttery, flaky, warm. Perfect with coffee.</p>
+          <span class="price">$3-4</span>
+        </div>
+        <div class="menu-item">
+          <h4>Muffin</h4>
+          <p>Blueberry, chocolate chip, or seasonal.</p>
+          <span class="price">$3-4</span>
+        </div>
+        <div class="menu-item">
+          <h4>Cinnamon Roll</h4>
+          <p>Soft, sticky, dangerous. In a good way.</p>
+          <span class="price">$4-5</span>
+        </div>
+        <div class="menu-item">
+          <h4>Bagel</h4>
+          <p>With cream cheese or your choice of spread.</p>
+          <span class="price">$3-4</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <h3>Lunch Items</h3>
+      <div class="menu-items">
+        <div class="menu-item">
+          <h4>Panini</h4>
+          <p>Grilled, pressed, delicious. Hot and fresh.</p>
+          <span class="price">$7-8</span>
+        </div>
+        <div class="menu-item">
+          <h4>Wrap</h4>
+          <p>Quick, fresh, filling. Your choice of fillings.</p>
+          <span class="price">$6-7</span>
+        </div>
+        <div class="menu-item">
+          <h4>Salad</h4>
+          <p>Fresh greens. Add protein. Made to order.</p>
+          <span class="price">$7-9</span>
+        </div>
+        <div class="menu-item">
+          <h4>Soup</h4>
+          <p>Seasonal. Hot. Comforting.</p>
+          <span class="price">$5-6</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <h3>Snacks & More</h3>
+      <div class="menu-items">
+        <div class="menu-item">
+          <h4>Smoothie</h4>
+          <p>Fresh blended. Refreshing.</p>
+          <span class="price">$4-5</span>
+        </div>
+        <div class="menu-item">
+          <h4>Pastry</h4>
+          <p>Various. All fresh. All good.</p>
+          <span class="price">$3-4</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="order-cta">
+      <h2>Ready to Order?</h2>
+      <p>Order ahead on Clover and skip the line. Your food will be ready when you pull up.</p>
+      <a href="https://www.clover.com/online-ordering/the-local-drivethru-centerville" class="cta-button">Order Now on Clover</a>
+    </section>
+
+    <section class="location-info">
+      <h2>Drive-Thru Hours & Location</h2>
+      <p>
+        <strong>Monday-Friday:</strong> 5 AM - 6 PM<br />
+        <strong>Saturday:</strong> 7 AM - 6 PM<br />
+        <strong>Sunday:</strong> Closed
+      </p>
+      <p>
+        1171 TN-100, Centerville, TN 37033<br />
+        <strong>Phone:</strong> <a href="tel:(931)729-4821">(931) 729-4821</a>
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .menu-section {
+    margin-bottom: 3rem;
+  }
+
+  .menu-section h3 {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    border-bottom: 2px solid var(--light-gray);
+    padding-bottom: 0.5rem;
+  }
+
+  .menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .menu-item {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #8b4513;
+  }
+
+  .menu-item h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+  }
+
+  .menu-item p {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .price {
+    display: block;
+    color: #8b4513;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .order-cta {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 3rem 0;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #8b4513;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #6b3410;
+  }
+
+  .location-info {
+    background: var(--cream);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .location-info a {
+    color: #8b4513;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .location-info a:hover {
+    color: var(--red);
+  }
+
+  @media (max-width: 768px) {
+    .menu-items {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

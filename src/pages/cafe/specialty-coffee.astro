@@ -1,0 +1,200 @@
+---
+// src/pages/cafe/specialty-coffee.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Specialty Coffee in Centerville | The Local Place Cafe"
+  description="Specialty espresso drinks, lattes, cappuccinos, and cold brew coffee at The Local Place Cafe. Fresh pulled, made with care. Order online or visit us at 111 S Public Square."
+  keywords="specialty coffee, espresso, latte, cappuccino, cold brew, coffee shop Centerville"
+>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Specialty Coffee at The Local Place</h1>
+      <p>Every Shot Pulled with Care</p>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/cafe">Cafe</a></li>
+        <li><span>Specialty Coffee</span></li>
+      </ol>
+    </nav>
+
+    <section class="content-section">
+      <h2>Specialty Coffee Done Right</h2>
+      <p>
+        We don't do burnt coffee. We don't do shots sitting under heat lamps. Every espresso is pulled fresh, right when you order. You can taste the difference between caring and phoning it in.
+      </p>
+
+      <h3>What We Serve</h3>
+      <div class="menu-items">
+        <div class="menu-item">
+          <h4>Espresso</h4>
+          <p>Single or double shot. Rich, bold, smooth. This is where it all starts.</p>
+          <span class="price">$2-3</span>
+        </div>
+        <div class="menu-item">
+          <h4>Cappuccino</h4>
+          <p>Equal parts espresso, steamed milk, and foam. Classic. Perfect. Done right.</p>
+          <span class="price">$4-5</span>
+        </div>
+        <div class="menu-item">
+          <h4>Latte</h4>
+          <p>Espresso with steamed milk and a touch of foam. Smooth, creamy, comforting.</p>
+          <span class="price">$4-5</span>
+        </div>
+        <div class="menu-item">
+          <h4>Americano</h4>
+          <p>Espresso shots topped with hot water. Bigger than an espresso, same bold taste.</p>
+          <span class="price">$3-4</span>
+        </div>
+        <div class="menu-item">
+          <h4>Macchiato</h4>
+          <p>Espresso "marked" with a small amount of foam. Strong. Intense. Worth it.</p>
+          <span class="price">$4</span>
+        </div>
+        <div class="menu-item">
+          <h4>Mocha</h4>
+          <p>Espresso, steamed milk, and chocolate. Coffee and dessert had a baby.</p>
+          <span class="price">$4-5</span>
+        </div>
+        <div class="menu-item">
+          <h4>Cold Brew</h4>
+          <p>Smooth, rich, cold. Steeped overnight. No bitterness. Just pure coffee goodness.</p>
+          <span class="price">$3-4</span>
+        </div>
+        <div class="menu-item">
+          <h4>Iced Latte</h4>
+          <p>Cold brew or espresso with cold milk and ice. Refreshing. Energizing. Perfect.</p>
+          <span class="price">$4-5</span>
+        </div>
+      </div>
+
+      <h3>Customization</h3>
+      <p>
+        Want it with different milk? Oat, almond, coconut—we've got options. Different sweetener? Ask. We make it how you like it, not how the manual says it should be.
+      </p>
+
+      <h3>Why Our Coffee Tastes Better</h3>
+      <ul>
+        <li><strong>Fresh grind:</strong> Beans ground fresh for each drink. Not ground yesterday.</li>
+        <li><strong>Proper temperature:</strong> Not too hot, not lukewarm. Just right.</li>
+        <li><strong>Quality beans:</strong> We care about what goes in the machine.</li>
+        <li><strong>Trained baristas:</strong> These folks know their craft. They pull shots like artists.</li>
+        <li><strong>No rush:</strong> We take time. Quality over speed.</li>
+      </ul>
+
+      <h3>Morning or Afternoon</h3>
+      <p>
+        Come in early (we open at 6am weekdays) and grab a fresh espresso to wake up. Or come mid-afternoon when you hit the slump and need a pick-me-up. We're here all day, ready with a perfectly pulled shot.
+      </p>
+
+      <div class="cta-box">
+        <h3>Order Ahead</h3>
+        <p>Want your coffee ready when you arrive? Order online and skip the line.</p>
+        <a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" class="cta-button">Order on Clover</a>
+      </div>
+    </section>
+
+    <section class="location-info">
+      <h2>Visit The Local Place Cafe</h2>
+      <p>
+        111 South Public Square, Centerville, TN 37033<br />
+        <strong>Phone:</strong> <a href="tel:(931)729-3481">(931) 729-3481</a><br />
+        <strong>Hours:</strong> Mon-Fri 6am-6pm | Sat 9am-6pm | Closed Sunday
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .menu-item {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #8b4513;
+  }
+
+  .menu-item h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+  }
+
+  .menu-item p {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .price {
+    display: block;
+    color: #8b4513;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .cta-box {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .cta-box h3 {
+    margin-top: 0;
+    color: var(--dark);
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #8b4513;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #6b3410;
+  }
+
+  .location-info {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .location-info a {
+    color: #8b4513;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .location-info a:hover {
+    color: var(--red);
+  }
+
+  @media (max-width: 768px) {
+    .menu-items {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

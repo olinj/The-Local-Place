@@ -1,0 +1,1387 @@
+---
+// src/pages/cafe-index.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+// JSON-LD Schema Markup for The Local Place Cafe
+const cafeBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["Cafe", "Restaurant", "LocalBusiness"],
+  "name": "The Local Place Cafe",
+  "image": [
+    "https://www.thelocalplace.com/cafe-exterior.jpg",
+    "https://www.thelocalplace.com/cafe-interior.jpg",
+    "https://www.thelocalplace.com/cafe-coffee.jpg"
+  ],
+  "description": "The Local Place Cafe in Centerville, TN serves specialty coffee, fresh pastries, breakfast, lunch, and homemade ice cream. Family-friendly cafe with drive-thru service.",
+  "telephone": "(931) 729-3481",
+  "email": "info@thelocalplacetn.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "111 South Public Square",
+    "addressLocality": "Centerville",
+    "addressRegion": "TN",
+    "postalCode": "37033",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 35.7781607,
+    "longitude": -87.4664943
+  },
+  "url": "https://www.thelocalplace.com/cafe-index",
+  "orderUrl": "https://www.clover.com/online-ordering/the-local-place-centerville-2",
+  "priceRange": "$",
+  "servesCuisine": ["American", "Cafe", "Coffee and Tea"],
+  "acceptsReservations": false,
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "06:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "paymentAccepted": ["Cash", "Credit Card", "Debit Card"],
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free Wi-Fi",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Indoor Seating",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Drive-Thru",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free Parking",
+      "value": true
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Centerville",
+      "containedIn": {
+        "@type": "State",
+        "name": "Tennessee"
+      }
+    },
+    {
+      "@type": "City",
+      "name": "Nashville"
+    },
+    {
+      "@type": "City",
+      "name": "Franklin"
+    },
+    {
+      "@type": "City",
+      "name": "Brentwood"
+    }
+  ]
+};
+
+// Menu Items Schema
+const menuSchema = {
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "name": "The Local Place Cafe Menu",
+  "hasMenuSection": [
+    {
+      "@type": "MenuSection",
+      "name": "Specialty Coffee",
+      "description": "Fresh-pulled espresso drinks made with premium beans",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Signature Latte",
+          "description": "Smooth espresso with steamed milk",
+          "offers": {
+            "@type": "Offer",
+            "price": "4.50",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Cappuccino",
+          "description": "Classic espresso with foamed milk",
+          "offers": {
+            "@type": "Offer",
+            "price": "4.00",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Cold Brew Coffee",
+          "description": "Smooth, slow-steeped cold brew",
+          "offers": {
+            "@type": "Offer",
+            "price": "4.00",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Fresh Pastries",
+      "description": "House-made pastries baked fresh daily",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Butter Croissant",
+          "description": "Flaky, buttery croissant baked daily",
+          "offers": {
+            "@type": "Offer",
+            "price": "3.50",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "MenuItem",
+          "name": "Cinnamon Roll",
+          "description": "House-made cinnamon roll with cream cheese icing",
+          "offers": {
+            "@type": "Offer",
+            "price": "4.50",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Breakfast",
+      "description": "Hot breakfast served fresh",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Breakfast Sandwich",
+          "description": "Egg, cheese, and your choice of meat on a fresh bagel",
+          "offers": {
+            "@type": "Offer",
+            "price": "6.50",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Lunch",
+      "description": "Fresh sandwiches, wraps, and salads",
+      "hasMenuItem": [
+        {
+          "@type": "MenuItem",
+          "name": "Panini",
+          "description": "Pressed panini with fresh ingredients",
+          "offers": {
+            "@type": "Offer",
+            "price": "8.50",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Homemade Ice Cream",
+      "description": "Creamy, handcrafted ice cream with rotating flavors"
+    },
+    {
+      "@type": "MenuSection",
+      "name": "Smoothies",
+      "description": "Real fruit smoothies made to order"
+    }
+  ]
+};
+
+// Aggregate Rating Schema
+const ratingSchema = {
+  "@context": "https://schema.org",
+  "@type": "AggregateRating",
+  "ratingValue": "4.8",
+  "reviewCount": "127",
+  "bestRating": "5",
+  "worstRating": "1"
+};
+
+// Service Area Schema
+const serviceAreaSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Cafe and Coffee Shop",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "The Local Place Cafe"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Centerville, Tennessee"
+    },
+    {
+      "@type": "City",
+      "name": "Nashville, Tennessee",
+      "description": "45 minutes from downtown Nashville"
+    },
+    {
+      "@type": "City",
+      "name": "Franklin, Tennessee",
+      "description": "35 minutes from Franklin"
+    },
+    {
+      "@type": "City",
+      "name": "Brentwood, Tennessee",
+      "description": "40 minutes from Brentwood"
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="The Local Place Cafe in Centerville, TN | Coffee, Pastries & Ice Cream"
+  description="The Local Place Cafe in Centerville serves specialty coffee, fresh pastries, breakfast, lunch, and homemade ice cream. 111 South Public Square. Open Mon-Fri 6am-6pm, Sat 9am-6pm. Order online."
+  keywords="cafe Centerville TN, coffee shop Centerville, breakfast Centerville, lunch Centerville, ice cream Centerville, specialty coffee Tennessee, cafe near Nashville"
+>
+  <!-- Additional Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(cafeBusinessSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(menuSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(ratingSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceAreaSchema)} slot="head" />
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Local Place Cafe | Centerville, TN | Coffee, Breakfast & Ice Cream</h1>
+      <p class="hero-subtitle">Fresh Coffee. Homemade Pastries. Real Ice Cream. Community Gathering Place.</p>
+      <div class="hero-cta-group">
+        <a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" class="hero-cta primary" target="_blank" rel="noopener noreferrer">Order Online</a>
+        <a href="tel:(931)729-3481" class="hero-cta secondary">Call (931) 729-3481</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS INFORMATION - ABOVE THE FOLD -->
+  <section class="business-info-banner">
+    <div class="container">
+      <div class="info-banner-grid">
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <div class="info-content">
+            <strong>Location</strong>
+            <p>111 South Public Square<br>Centerville, TN 37033</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📞</span>
+          <div class="info-content">
+            <strong>Phone</strong>
+            <p><a href="tel:(931)729-3481">(931) 729-3481</a></p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">🕐</span>
+          <div class="info-content">
+            <strong>Hours</strong>
+            <p>Mon-Fri 6am-6pm<br>Sat 9am-6pm | Closed Sunday</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">🌐</span>
+          <div class="info-content">
+            <strong>Order Online</strong>
+            <p><a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" target="_blank" rel="noopener noreferrer">Clover Ordering</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRODUCTION SECTION -->
+  <section class="intro-section">
+    <div class="container">
+      <h2>Your Neighborhood Cafe in Historic Downtown Centerville</h2>
+      <div class="intro-content">
+        <p class="intro-lead">
+          The Local Place Cafe isn't trying to be fancy. We're a community cafe on Centerville's public square serving fresh coffee, house-made pastries, hot breakfast, real lunch, and homemade ice cream. We open at 6am so you can grab coffee before work, stay open until 6pm so you can wind down with dessert, and treat everyone like neighbors—because that's what you are.
+        </p>
+        <p>
+          Our specialty coffee is fresh-pulled, not burnt. Our pastries are baked here, not trucked in frozen. Our ice cream is made in-house with rotating flavors. Everything is made with care because we're not just serving food—we're feeding our community.
+        </p>
+        <p>
+          Whether you're a Centerville local grabbing your morning latte, a Nashville visitor discovering us for the first time, or a Franklin family making the drive for our homemade ice cream, you're welcome here. Come for the coffee. Stay for the conversation. Leave feeling like you found something real.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS SECTION -->
+  <section class="service-areas">
+    <div class="container">
+      <h2>Serving Centerville and Surrounding Communities</h2>
+      <div class="areas-grid">
+        <div class="area-card primary">
+          <h3>Centerville (Local)</h3>
+          <p class="area-distance">Right here on the square</p>
+          <p>Our hometown. Walk over from anywhere in Centerville for your daily coffee fix, quick breakfast, or afternoon ice cream.</p>
+          <p class="area-features"><strong>Why locals love us:</strong> Fresh coffee every morning, consistent quality, friendly faces, community gathering spot</p>
+        </div>
+        <div class="area-card">
+          <h3>Nashville Area</h3>
+          <p class="area-distance">45 minutes south</p>
+          <p>Worth the drive from Nashville for specialty coffee, house-made pastries, and homemade ice cream you won't find in the city.</p>
+          <a href="/cafe-near-nashville" class="area-link">Nashville Visitor Info →</a>
+        </div>
+        <div class="area-card">
+          <h3>Franklin</h3>
+          <p class="area-distance">35 minutes west</p>
+          <p>Franklin families make the trip for our laid-back atmosphere, real food, and ice cream that beats any chain.</p>
+          <a href="/cafe-franklin-tn" class="area-link">Franklin Visitor Info →</a>
+        </div>
+        <div class="area-card">
+          <h3>Brentwood</h3>
+          <p class="area-distance">40 minutes away</p>
+          <p>Escape Brentwood's crowds and discover a local cafe with fresh coffee, homemade pastries, and genuine hospitality.</p>
+          <a href="/cafe-brentwood-tn" class="area-link">Brentwood Visitor Info →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU CATEGORIES SECTION -->
+  <section class="menu-categories">
+    <div class="container">
+      <h2>What We Serve at The Local Place Cafe</h2>
+      <p class="section-intro">Fresh, made-to-order food and drinks. No shortcuts, no frozen food trucks, no stale pastries.</p>
+
+      <div class="menu-grid">
+        <div class="menu-category">
+          <span class="category-icon">☕</span>
+          <h3>Specialty Coffee</h3>
+          <p class="category-description">Fresh-pulled espresso, lattes, cappuccinos, cold brew, and drip coffee. We use premium beans and actually know how to pull a shot that doesn't taste burnt.</p>
+          <ul class="menu-items">
+            <li><strong>Signature Latte</strong> - $4.50</li>
+            <li><strong>Cappuccino</strong> - $4.00</li>
+            <li><strong>Cold Brew Coffee</strong> - $4.00</li>
+          </ul>
+        </div>
+
+        <div class="menu-category">
+          <span class="category-icon">🥐</span>
+          <h3>Fresh Pastries</h3>
+          <p class="category-description">Baked in-house every morning. Flaky croissants, cinnamon rolls with cream cheese icing, muffins, scones, and Danish pastries. Arrive early for the best selection.</p>
+          <ul class="menu-items">
+            <li><strong>Butter Croissant</strong> - $3.50</li>
+            <li><strong>Cinnamon Roll</strong> - $4.50</li>
+          </ul>
+        </div>
+
+        <div class="menu-category">
+          <span class="category-icon">🍳</span>
+          <h3>Breakfast</h3>
+          <p class="category-description">Hot breakfast served fresh from 6am. Breakfast sandwiches, bagels, breakfast plates, and omelets. Real eggs, real cheese, hot off the grill.</p>
+          <ul class="menu-items">
+            <li><strong>Breakfast Sandwich</strong> - $6.50</li>
+          </ul>
+        </div>
+
+        <div class="menu-category">
+          <span class="category-icon">🥪</span>
+          <h3>Lunch</h3>
+          <p class="category-description">Pressed paninis, wraps, fresh salads, and daily soups. Made to order with fresh ingredients. Served hot and ready to eat.</p>
+          <ul class="menu-items">
+            <li><strong>Pressed Panini</strong> - $8.50</li>
+          </ul>
+        </div>
+
+        <div class="menu-category">
+          <span class="category-icon">🍦</span>
+          <h3>Homemade Ice Cream</h3>
+          <p class="category-description">Made here. Creamy, rich, rotating flavors. This isn't soft-serve from a machine—it's real ice cream, hand-scooped, better than any chain.</p>
+        </div>
+
+        <div class="menu-category">
+          <span class="category-icon">🥤</span>
+          <h3>Smoothies & Drinks</h3>
+          <p class="category-description">Real fruit smoothies, iced coffee drinks, specialty beverages. Blended fresh, not poured from a mix.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US SECTION -->
+  <section class="why-choose">
+    <div class="container">
+      <h2>Why People Choose The Local Place Cafe</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>Fresh, Not Frozen</h3>
+          <p>Our pastries are baked here every morning. Our lunch is made to order. Our ice cream is made in-house. No frozen deliveries, no shortcuts.</p>
+        </div>
+        <div class="why-item">
+          <h3>Real Coffee</h3>
+          <p>We actually know how to pull an espresso shot. Fresh beans, proper technique, coffee that tastes like coffee—not burnt corporate chain shots.</p>
+        </div>
+        <div class="why-item">
+          <h3>Homemade Ice Cream</h3>
+          <p>Made here with rotating flavors. Creamy, rich, way better than soft-serve. Worth the drive from Nashville, Franklin, or Brentwood.</p>
+        </div>
+        <div class="why-item">
+          <h3>Community Atmosphere</h3>
+          <p>We're on Centerville's public square. Locals gather here. Visitors feel welcome. It's a real community cafe, not a corporate franchise.</p>
+        </div>
+        <div class="why-item">
+          <h3>Free Wi-Fi & Seating</h3>
+          <p>Set up your laptop, order coffee, get work done. Comfortable seating, fast Wi-Fi, and we won't kick you out after 30 minutes.</p>
+        </div>
+        <div class="why-item">
+          <h3>Drive-Thru Available</h3>
+          <p>Need coffee but short on time? Use our drive-thru. Quick service without sacrificing quality.</p>
+        </div>
+        <div class="why-item">
+          <h3>Dietary Options</h3>
+          <p>Vegetarian options, gluten-free choices, dairy alternatives for coffee drinks. We'll work with your dietary needs.</p>
+        </div>
+        <div class="why-item">
+          <h3>Free Parking</h3>
+          <p>Park anywhere around the square. No parking meters, no parking garages, no stress about finding a spot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-quote">"Best coffee in Hickman County. I stop here every morning before work. The baristas know my order by heart, and the pastries are always fresh. Real community spot."</p>
+          <p class="testimonial-author">- Sarah M. (Centerville Local)</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-quote">"We drove from Nashville for brunch after seeing photos of their cinnamon rolls. Worth every minute of the drive. Flaky croissants, perfect latte, homemade ice cream for dessert. We'll be back."</p>
+          <p class="testimonial-author">- Mike & Emma R. (Nashville)</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-quote">"My kids beg to come here for the ice cream. It's homemade, creamy, and changes flavors regularly. The breakfast sandwiches are solid too. Great family spot."</p>
+          <p class="testimonial-author">- The Patterson Family (Franklin)</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-quote">"I work remotely and needed a change from my home office. Set up at The Local Place with my laptop, ordered a few coffees throughout the day. Fast Wi-Fi, comfortable seating, no pressure to leave. Perfect."</p>
+          <p class="testimonial-author">- Marcus T. (Remote Worker, Nashville)</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-quote">"Fresh food, real coffee, and friendly service. I've tried every cafe between Brentwood and Centerville—this one's the best. The paninis are hot, the coffee isn't burnt, and the vibe is relaxed."</p>
+          <p class="testimonial-author">- Jennifer L. (Brentwood)</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-quote">"Stopped in during a road trip and ended up staying for two hours. Excellent cold brew, fresh pastries, and the owners actually care about their customers. This is what local cafes should be."</p>
+          <p class="testimonial-author">- David K. (Visiting from Memphis)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT INFORMATION SECTION -->
+  <section class="visit-info-section">
+    <div class="container">
+      <h2>Plan Your Visit to The Local Place Cafe</h2>
+      <div class="visit-grid">
+        <div class="visit-card">
+          <h3>Hours of Operation</h3>
+          <div class="hours-list">
+            <div class="hours-row">
+              <span class="day">Monday - Friday</span>
+              <span class="time">6:00 AM - 6:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Saturday</span>
+              <span class="time">9:00 AM - 6:00 PM</span>
+            </div>
+            <div class="hours-row closed">
+              <span class="day">Sunday</span>
+              <span class="time">Closed</span>
+            </div>
+          </div>
+          <p class="hours-note">Open early for your morning coffee fix. Open late for afternoon ice cream.</p>
+        </div>
+
+        <div class="visit-card">
+          <h3>Location & Parking</h3>
+          <p><strong>Address:</strong><br>111 South Public Square<br>Centerville, TN 37033</p>
+          <p><strong>Parking:</strong> Free parking all around the public square. No meters, no stress.</p>
+          <p><strong>Accessibility:</strong> Ground-level entrance, wheelchair accessible.</p>
+        </div>
+
+        <div class="visit-card">
+          <h3>Amenities</h3>
+          <ul class="amenities-list">
+            <li>Free Wi-Fi</li>
+            <li>Indoor seating</li>
+            <li>Drive-thru service</li>
+            <li>Online ordering</li>
+            <li>Credit cards accepted</li>
+            <li>Family-friendly</li>
+            <li>Pet-friendly outdoor area</li>
+          </ul>
+        </div>
+
+        <div class="visit-card">
+          <h3>Order Online</h3>
+          <p>Skip the line and order ahead through Clover. Your order will be ready when you arrive.</p>
+          <a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" class="cta-button" target="_blank" rel="noopener noreferrer">Order on Clover</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <section class="map-section">
+    <div class="container">
+      <h2>Find Us in Downtown Centerville</h2>
+      <p class="map-intro">We're located right on Centerville's historic public square at 111 South Public Square. Free parking available around the square.</p>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.8516194847634!2d-87.4686830237847!3d35.77816097257194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x887829c4c9a9a9a9%3A0x1234567890abcdef!2s111%20S%20Public%20Square%2C%20Centerville%2C%20TN%2037033!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+          width="100%"
+          height="450"
+          style="border:0; border-radius: 8px;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="The Local Place Cafe Location Map">
+        </iframe>
+      </div>
+      <div class="directions-links">
+        <a href="https://www.google.com/maps/dir//111+S+Public+Square,+Centerville,+TN+37033" target="_blank" rel="noopener noreferrer" class="directions-link">Get Directions from Google Maps →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY PLACEHOLDER -->
+  <section class="photo-gallery-section">
+    <div class="container">
+      <h2>See The Local Place Cafe</h2>
+      <p class="gallery-intro">From fresh-pulled espresso to house-made ice cream, take a look at what makes our cafe special.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <span>Specialty Coffee</span>
+          </div>
+          <p class="gallery-caption">Fresh espresso, lattes, and cappuccinos</p>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <span>Fresh Pastries</span>
+          </div>
+          <p class="gallery-caption">House-made croissants and cinnamon rolls</p>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <span>Homemade Ice Cream</span>
+          </div>
+          <p class="gallery-caption">Creamy, hand-scooped ice cream</p>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <span>Cozy Interior</span>
+          </div>
+          <p class="gallery-caption">Comfortable seating and free Wi-Fi</p>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <span>Fresh Lunch</span>
+          </div>
+          <p class="gallery-caption">Pressed paninis and wraps made to order</p>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder">
+            <span>Downtown Square</span>
+          </div>
+          <p class="gallery-caption">Located on historic Centerville square</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-items">
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>What are your hours?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Monday through Friday: 6:00 AM - 6:00 PM | Saturday: 9:00 AM - 6:00 PM | Sunday: Closed</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can I order online?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes! Order online through our Clover ordering system. Your order will be ready when you arrive. <a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" target="_blank" rel="noopener noreferrer">Order here</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Do you have a drive-thru?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes, we have drive-thru service for quick coffee and food pickup.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is parking available?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Free parking is available all around Centerville's public square. No parking meters or fees.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can I work on my laptop here?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Absolutely! We have free Wi-Fi, comfortable seating, and we won't rush you out. Order coffee, set up your laptop, and work as long as you need.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Do you have vegetarian or gluten-free options?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes, we offer vegetarian options and gluten-free choices. We also have dairy alternatives for coffee drinks. Ask our staff about specific dietary needs.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Is The Local Place Cafe kid-friendly?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Very kid-friendly! Kids love our homemade ice cream, smoothies, and pastries. Families are always welcome.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>How far is the cafe from Nashville?</span>
+            <span class="toggle-icon">+</span>
+          </summary>
+          <div class="faq-answer">
+            <p>About 45 minutes south of Nashville via I-40 West and US-100 South. Many Nashville residents make the drive for our specialty coffee and homemade ice cream.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA SECTION -->
+  <section class="final-cta">
+    <div class="container">
+      <h2>Visit The Local Place Cafe Today</h2>
+      <p class="cta-description">
+        Fresh coffee. House-made pastries. Homemade ice cream. Community atmosphere. We're open six days a week on Centerville's public square.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://www.clover.com/online-ordering/the-local-place-centerville-2" class="cta-button primary" target="_blank" rel="noopener noreferrer">Order Online</a>
+        <a href="tel:(931)729-3481" class="cta-button secondary">Call (931) 729-3481</a>
+      </div>
+      <p class="cta-address">111 South Public Square, Centerville, TN 37033</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* HERO SECTION */
+  .hero {
+    background: linear-gradient(135deg, #8b6f47 0%, #a87c59 100%);
+    padding: 6rem 2rem;
+    text-align: center;
+    color: white;
+  }
+
+  .hero h1 {
+    color: white;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-subtitle {
+    color: var(--cream);
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-cta {
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .hero-cta.primary {
+    background-color: var(--red);
+    color: white;
+  }
+
+  .hero-cta.primary:hover {
+    background-color: white;
+    color: var(--brown);
+  }
+
+  .hero-cta.secondary {
+    background-color: white;
+    color: var(--brown);
+  }
+
+  .hero-cta.secondary:hover {
+    background-color: var(--red);
+    color: white;
+  }
+
+  /* BUSINESS INFO BANNER */
+  .business-info-banner {
+    background: var(--light-gray);
+    padding: 2rem 0;
+    border-bottom: 3px solid var(--brown);
+  }
+
+  .info-banner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .info-icon {
+    font-size: 2rem;
+  }
+
+  .info-content strong {
+    display: block;
+    color: var(--brown);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .info-content a {
+    color: var(--brown);
+    font-weight: 600;
+  }
+
+  /* INTRO SECTION */
+  .intro-section {
+    padding: 4rem 2rem;
+    background: white;
+  }
+
+  .intro-section h2 {
+    color: var(--brown);
+    margin-bottom: 2rem;
+  }
+
+  .intro-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .intro-lead {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  /* SERVICE AREAS SECTION */
+  .service-areas {
+    padding: 4rem 2rem;
+    background: var(--cream);
+  }
+
+  .service-areas h2 {
+    color: var(--brown);
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .area-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--brown);
+  }
+
+  .area-card.primary {
+    border-left-width: 6px;
+    border-left-color: var(--red);
+  }
+
+  .area-card h3 {
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .area-distance {
+    color: var(--brown);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .area-features {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    font-size: 0.95rem;
+  }
+
+  .area-link {
+    display: inline-block;
+    color: var(--brown);
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .area-link:hover {
+    color: var(--red);
+  }
+
+  /* MENU CATEGORIES */
+  .menu-categories {
+    padding: 4rem 2rem;
+    background: white;
+  }
+
+  .menu-categories h2 {
+    color: var(--brown);
+  }
+
+  .section-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .menu-category {
+    background: var(--cream);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+  }
+
+  .category-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .menu-category h3 {
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+
+  .category-description {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .menu-items {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  .menu-items li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e0d5c7;
+    font-size: 0.95rem;
+  }
+
+  .menu-items li:last-child {
+    border-bottom: none;
+  }
+
+  /* WHY CHOOSE SECTION */
+  .why-choose {
+    padding: 4rem 2rem;
+    background: var(--light-gray);
+  }
+
+  .why-choose h2 {
+    color: var(--brown);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .why-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .why-item h3 {
+    color: var(--brown);
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+  }
+
+  .why-item p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* TESTIMONIALS SECTION */
+  .testimonials-section {
+    padding: 4rem 2rem;
+    background: white;
+  }
+
+  .testimonials-section h2 {
+    color: var(--brown);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .testimonial-card {
+    background: var(--cream);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+  }
+
+  .rating {
+    color: #ffa500;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-quote {
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+  }
+
+  .testimonial-author {
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  /* VISIT INFO SECTION */
+  .visit-info-section {
+    padding: 4rem 2rem;
+    background: var(--light-gray);
+  }
+
+  .visit-info-section h2 {
+    color: var(--brown);
+  }
+
+  .visit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .visit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .visit-card h3 {
+    color: var(--brown);
+    margin-bottom: 1rem;
+  }
+
+  .hours-list {
+    margin: 1rem 0;
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .hours-row.closed {
+    color: var(--text-light);
+  }
+
+  .hours-note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-style: italic;
+  }
+
+  .amenities-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .amenities-list li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .amenities-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--brown);
+    font-weight: bold;
+  }
+
+  /* MAP SECTION */
+  .map-section {
+    padding: 4rem 2rem;
+    background: white;
+  }
+
+  .map-section h2 {
+    color: var(--brown);
+  }
+
+  .map-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+  }
+
+  .map-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+  }
+
+  .directions-links {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .directions-link {
+    color: var(--brown);
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  /* PHOTO GALLERY */
+  .photo-gallery-section {
+    padding: 4rem 2rem;
+    background: var(--cream);
+  }
+
+  .photo-gallery-section h2 {
+    color: var(--brown);
+  }
+
+  .gallery-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .gallery-item {
+    text-align: center;
+  }
+
+  .gallery-placeholder {
+    background: linear-gradient(135deg, #8b6f47 0%, #a87c59 100%);
+    height: 250px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-caption {
+    font-size: 0.95rem;
+    color: var(--text-light);
+  }
+
+  /* FAQ SECTION */
+  .faq-section {
+    padding: 4rem 2rem;
+    background: white;
+  }
+
+  .faq-section h2 {
+    color: var(--brown);
+  }
+
+  .faq-items {
+    max-width: 900px;
+    margin: 2rem auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    background: var(--light-gray);
+    font-weight: 600;
+    color: var(--dark);
+    user-select: none;
+  }
+
+  .faq-question:hover {
+    background: #efefef;
+  }
+
+  .toggle-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] .toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 1.5rem;
+    border-top: 1px solid #ddd;
+    line-height: 1.8;
+  }
+
+  .faq-answer a {
+    color: var(--brown);
+    font-weight: 600;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #8b6f47 0%, #a87c59 100%);
+    text-align: center;
+    color: white;
+  }
+
+  .final-cta h2 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .cta-description {
+    font-size: 1.2rem;
+    color: var(--cream);
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-button {
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .cta-button.primary {
+    background-color: var(--red);
+    color: white;
+  }
+
+  .cta-button.primary:hover {
+    background-color: white;
+    color: var(--brown);
+  }
+
+  .cta-button.secondary {
+    background-color: white;
+    color: var(--brown);
+  }
+
+  .cta-button.secondary:hover {
+    background-color: var(--red);
+    color: white;
+  }
+
+  .cta-address {
+    color: var(--cream);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .info-banner-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .menu-grid,
+    .areas-grid,
+    .why-grid,
+    .testimonials-grid,
+    .visit-grid,
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-cta-group,
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-cta,
+    .cta-button {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>
