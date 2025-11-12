@@ -1,0 +1,269 @@
+---
+// src/pages/art-studio.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+
+const artStudioServices = [
+  {
+    title: 'Family Pottery Painting Experience',
+    description: 'Multi-generational creative fun with pottery painting for the whole family.',
+    price: 'Starting at $15-25',
+    href: '/art-studio/family-pottery-painting-experience',
+    bgClass: 'family-bg',
+  },
+  {
+    title: 'Kids Pottery Painting Class',
+    description: 'Fun, age-appropriate pottery painting classes designed for children.',
+    price: '$12-18',
+    href: '/art-studio/kids-pottery-painting-class',
+    bgClass: 'kids-bg',
+  },
+  {
+    title: 'Pottery and Candle Combo Session',
+    description: 'Experience both pottery and candle making in one creative session.',
+    price: '$35-45',
+    href: '/art-studio/pottery-and-candle-combo-session',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Paint and Pour Pottery Candle',
+    description: 'Combine pottery painting with candle making for double the creativity.',
+    price: '$30-40',
+    href: '/art-studio/paint-and-pour-pottery-candle',
+    bgClass: 'event-bg',
+  },
+  {
+    title: 'Kids Candle Making Class',
+    description: 'Safe, fun candle-making experiences designed for children.',
+    price: '$15-22',
+    href: '/art-studio/kids-candle-making-class',
+    bgClass: 'candle-bg',
+  },
+];
+---
+
+<BaseLayout
+  title="Art Studio"
+  description="Family-friendly art experiences in Centerville, TN. Kids' pottery painting, family combo classes, and creative candle making. Perfect for families and groups. Book your art experience today."
+  keywords="art studio, kids art classes, family activities, pottery painting kids, Centerville"
+>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Art Studio Centerville, TN</h1>
+      <p>Family Creative Experiences & Kids Art Classes</p>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><span>Art Studio</span></li>
+      </ol>
+    </nav>
+
+    <section class="category-intro">
+      <h2>Our Art Studio Experiences</h2>
+      <p>
+        Our art studio is dedicated to making creativity accessible and fun for the whole family. Whether your kids are experiencing pottery painting for the first time or your family wants to try combo classes blending multiple art forms, we create welcoming, judgment-free environments where everyone's creativity can shine.
+      </p>
+    </section>
+
+    <section class="services-section">
+      <div class="services-grid">
+        {artStudioServices.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </section>
+
+    <section class="why-art-studio">
+      <h2>Why Choose Our Art Studio</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>🎨 Kids Welcome</h3>
+          <p>Age-appropriate classes designed specifically for children's safety and fun.</p>
+        </div>
+        <div class="why-item">
+          <h3>Family Bonding</h3>
+          <p>Create memories together while making beautiful art pieces.</p>
+        </div>
+        <div class="why-item">
+          <h3>No Experience Needed</h3>
+          <p>Perfect first art experience for kids of all ages and abilities.</p>
+        </div>
+        <div class="why-item">
+          <h3>Combo Classes</h3>
+          <p>Try multiple art forms in one session—pottery AND candles!</p>
+        </div>
+        <div class="why-item">
+          <h3>Take-Home Creations</h3>
+          <p>Kids leave with beautiful pieces they made themselves.</p>
+        </div>
+        <div class="why-item">
+          <h3>Integrated Café</h3>
+          <p>Parents can enjoy coffee while kids create. Snacks available for everyone.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-art">
+      <h2>Featured Art Studio Experience</h2>
+      <div style="background: var(--light-gray); padding: 3rem; border-radius: 8px; margin-top: 2rem;">
+        <div style="max-width: 600px;">
+          <h3>Family Pottery Painting Experience</h3>
+          <p>
+            Our most popular family offering! Everyone paints their own pre-made pottery piece while enjoying time together. Perfect for grandparents visiting, birthday celebrations, or just a fun family outing.
+          </p>
+          <ul style="margin-left: 1.5rem; margin-top: 1.5rem;">
+            <li>All painting supplies included</li>
+            <li>Professional glazing and kiln firing</li>
+            <li>Safe, age-appropriate setup</li>
+            <li>Fun for ages 3-93</li>
+            <li>Perfect for family bonding</li>
+          </ul>
+          <a href="/art-studio/family-pottery-painting-experience" class="cta-button" style="margin-top: 2rem;">
+            Learn More & Book
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="group-bookings">
+      <h2>Perfect For Groups & Celebrations</h2>
+      <p>Planning a special event? Our art studio is perfect for:</p>
+      <ul style="margin-left: 1.5rem;">
+        <li><strong>Birthday Parties:</strong> Create art memories for kids of all ages</li>
+        <li><strong>School Groups:</strong> Educational field trips with hands-on creativity</li>
+        <li><strong>Family Reunions:</strong> Multi-generational fun and bonding</li>
+        <li><strong>Girl Scouts & Teams:</strong> Group activities and merit badge fun</li>
+        <li><strong>Grandparent Days:</strong> Special bonding experiences across generations</li>
+      </ul>
+      <p style="margin-top: 2rem;">
+        <strong>Contact us at (931) XXX-XXXX or info@thelocalplace.com for group bookings and special events.</strong>
+      </p>
+    </section>
+
+    <section class="gallery-teaser">
+      <h2>See What Our Families Create</h2>
+      <p>Follow along as our young artists and families create beautiful memories on Instagram!</p>
+      <p><a href="https://instagram.com/thelocalplace" target="_blank" class="cta-button">Follow Us on Instagram</a></p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb ol {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb li::after {
+    content: ' / ';
+    margin: 0 0.5rem;
+    color: #ccc;
+  }
+
+  .breadcrumb li:last-child::after {
+    content: '';
+  }
+
+  .breadcrumb a {
+    color: var(--brown);
+    text-decoration: underline;
+  }
+
+  .breadcrumb span {
+    color: var(--text-light);
+  }
+
+  .category-intro {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+  }
+
+  .category-intro p {
+    margin-bottom: 0;
+  }
+
+  .services-section {
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .why-art-studio {
+    background: var(--cream);
+    padding: 3rem;
+    border-radius: 8px;
+    margin: 4rem 0;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .why-item {
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+  }
+
+  .why-item h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .featured-art {
+    margin: 4rem 0;
+  }
+
+  .group-bookings {
+    background: var(--light-gray);
+    padding: 3rem;
+    border-radius: 8px;
+    margin: 4rem 0;
+  }
+
+  .group-bookings ul li {
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-teaser {
+    text-align: center;
+    padding: 3rem;
+    background: var(--cream);
+    border-radius: 8px;
+    margin: 4rem 0 2rem;
+  }
+
+  .gallery-teaser h2 {
+    margin-top: 0;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

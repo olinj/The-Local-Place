@@ -1,0 +1,292 @@
+---
+// src/pages/candle-store.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+
+const candleServices = [
+  {
+    title: 'Candle Making Workshop',
+    description: 'Learn the art of candle making from start to finish in our hands-on workshop.',
+    price: 'Starting at $25-35',
+    href: '/candle-store/candle-making-workshop',
+    bgClass: 'candle-bg',
+  },
+  {
+    title: 'Pour Your Own Candle Class',
+    description: 'Create beautiful hand-poured candles with custom colors and scents.',
+    price: '$20-30',
+    href: '/candle-store/pour-your-own-candle-class',
+    bgClass: 'candle-bg',
+  },
+  {
+    title: 'Scented Candle Making Experience',
+    description: 'Blend your own signature scents and create custom scented candles.',
+    price: '$25-35',
+    href: '/candle-store/scented-candle-making-experience',
+    bgClass: 'candle-bg',
+  },
+  {
+    title: 'Custom Scent Candle Creation',
+    description: 'Design your own unique fragrance blend for a personalized candle.',
+    price: '$30-40',
+    href: '/candle-store/custom-scent-candle-creation',
+    bgClass: 'candle-bg',
+  },
+  {
+    title: 'Container Candle Making',
+    description: 'Pour and design candles in beautiful containers to take home immediately.',
+    price: '$20-28',
+    href: '/candle-store/container-candle-making',
+    bgClass: 'candle-bg',
+  },
+  {
+    title: 'Essential Oil Candle Workshop',
+    description: 'Create luxurious candles using pure essential oils.',
+    price: '$25-35',
+    href: '/candle-store/essential-oil-candle-workshop',
+    bgClass: 'candle-bg',
+  },
+  {
+    title: 'Eco-Friendly Candle Making',
+    description: 'Learn sustainable candle making with eco-friendly materials.',
+    price: '$25-35',
+    href: '/candle-store/eco-friendly-candle-making',
+    bgClass: 'candle-bg',
+  },
+  {
+    title: 'Adult Candle Making Night',
+    description: 'Adult-focused candle making experience perfect for date nights and group events.',
+    price: '$25-35',
+    href: '/candle-store/adult-candle-making-night',
+    bgClass: 'event-bg',
+  },
+];
+---
+
+<BaseLayout
+  title="Candle Store"
+  description="Create custom scented candles in Centerville, TN. Hand-poured soy candles with fragrance blending. Perfect for date nights, group events, and creative experiences. Book your candle-making class today."
+  keywords="candle making, hand-poured candles, scented candles, candle workshop, Centerville"
+>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Candle Store Centerville, TN</h1>
+      <p>Create Beautiful Hand-Poured Scented Candles</p>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><span>Candle Store</span></li>
+      </ol>
+    </nav>
+
+    <section class="category-intro">
+      <h2>Our Candle Making Services</h2>
+      <p>
+        Whether you're pouring your first candle or blending custom scents, our candle-making experiences are designed for all
+        skill levels. Learn professional techniques while creating beautiful, unique candles you'll treasure. Perfect for individuals,
+        couples, group events, and anyone who loves creative crafts with a purpose.
+      </p>
+    </section>
+
+    <section class="services-section">
+      <div class="services-grid">
+        {candleServices.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </section>
+
+    <section class="why-candles">
+      <h2>Why Choose Our Candle Studio</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>🕯️ Premium Supplies</h3>
+          <p>We use high-quality soy wax, pure fragrance oils, and beautiful containers for lasting results.</p>
+        </div>
+        <div class="why-item">
+          <h3>Expert Instruction</h3>
+          <p>Learn from experienced candlemakers who guide you through every step of the process.</p>
+        </div>
+        <div class="why-item">
+          <h3>Unique Fragrances</h3>
+          <p>Blend from dozens of fragrance oils to create your own signature scent profile.</p>
+        </div>
+        <div class="why-item">
+          <h3>Take-Home Creations</h3>
+          <p>Leave with beautiful handmade candles ready to use or gift to someone special.</p>
+        </div>
+        <div class="why-item">
+          <h3>Group-Friendly</h3>
+          <p>Perfect for date nights, girls' nights, corporate events, and celebrations.</p>
+        </div>
+        <div class="why-item">
+          <h3>Destination Worth the Drive</h3>
+          <p>Located 45 minutes from Nashville—a unique creative experience you won't find nearby.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-candles">
+      <h2>Featured Candle Experience</h2>
+      <div style="background: var(--light-gray); padding: 3rem; border-radius: 8px; margin-top: 2rem;">
+        <div style="max-width: 600px;">
+          <h3>Pour Your Own Candle Class</h3>
+          <p>
+            Our most popular candle experience! You'll pour, design, and customize beautiful soy candles with your choice of colors
+            and fragrances. Sessions are hands-on and fun, with expert guidance making it perfect for beginners.
+          </p>
+          <ul style="margin-left: 1.5rem; margin-top: 1.5rem;">
+            <li>Premium soy wax and fragrance selection included</li>
+            <li>Custom color and scent blending</li>
+            <li>Professional pouring techniques</li>
+            <li>Take home 2-3 beautiful candles immediately</li>
+          </ul>
+          <a href="/candle-store/pour-your-own-candle-class" class="cta-button" style="margin-top: 2rem;">
+            Learn More & Book
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="group-bookings">
+      <h2>Perfect For Group Events</h2>
+      <p>Plan your next special occasion at Made @ The Local Candle Studio:</p>
+      <ul style="margin-left: 1.5rem;">
+        <li><strong>Date Nights:</strong> Romantic candle-making for couples</li>
+        <li><strong>Girls' Nights:</strong> Fun creative experience with friends</li>
+        <li><strong>Corporate Team Building:</strong> Team bonding through creative making</li>
+        <li><strong>Birthday Celebrations:</strong> Unique celebration experiences</li>
+        <li><strong>Bachelorette Parties:</strong> Memorable pre-wedding activities</li>
+      </ul>
+      <p style="margin-top: 2rem;">
+        <strong>Contact us at (931) XXX-XXXX or info@thelocalplace.com for group bookings and special events.</strong>
+      </p>
+    </section>
+
+    <section class="gallery-teaser">
+      <h2>See Our Custom Creations</h2>
+      <p>Browse beautiful candles created by our guests on Instagram!</p>
+      <p><a href="https://instagram.com/thelocalplace" target="_blank" class="cta-button">Follow Us on Instagram</a></p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb ol {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb li::after {
+    content: ' / ';
+    margin: 0 0.5rem;
+    color: #ccc;
+  }
+
+  .breadcrumb li:last-child::after {
+    content: '';
+  }
+
+  .breadcrumb a {
+    color: var(--brown);
+    text-decoration: underline;
+  }
+
+  .breadcrumb span {
+    color: var(--text-light);
+  }
+
+  .category-intro {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+  }
+
+  .category-intro p {
+    margin-bottom: 0;
+  }
+
+  .services-section {
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .why-candles {
+    background: var(--cream);
+    padding: 3rem;
+    border-radius: 8px;
+    margin: 4rem 0;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .why-item {
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+  }
+
+  .why-item h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .featured-candles {
+    margin: 4rem 0;
+  }
+
+  .group-bookings {
+    background: var(--light-gray);
+    padding: 3rem;
+    border-radius: 8px;
+    margin: 4rem 0;
+  }
+
+  .group-bookings ul li {
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-teaser {
+    text-align: center;
+    padding: 3rem;
+    background: var(--cream);
+    border-radius: 8px;
+    margin: 4rem 0 2rem;
+  }
+
+  .gallery-teaser h2 {
+    margin-top: 0;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

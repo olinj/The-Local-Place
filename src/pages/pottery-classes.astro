@@ -1,0 +1,283 @@
+---
+// src/pages/pottery-classes.astro
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+
+const potteryClassServices = [
+  {
+    title: 'Date Night Pottery Painting',
+    description: 'Romantic pottery painting experience perfect for couples.',
+    price: '$25-35',
+    href: '/pottery-classes/date-night-pottery-painting',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Date Night Candle Making',
+    description: 'Create custom candles together for a romantic evening.',
+    price: '$30-40',
+    href: '/pottery-classes/date-night-candle-making',
+    bgClass: 'candle-bg',
+  },
+  {
+    title: 'Adult Pottery Painting Night',
+    description: 'Adults-only pottery painting for a fun evening out.',
+    price: '$20-30',
+    href: '/pottery-classes/adult-pottery-painting-night',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Ladies Night Pottery Painting',
+    description: 'Girls\' night out pottery painting and creative bonding.',
+    price: '$20-30',
+    href: '/pottery-classes/ladies-night-pottery-painting',
+    bgClass: 'event-bg',
+  },
+  {
+    title: 'Team Building Pottery Painting',
+    description: 'Corporate team building through creative pottery painting.',
+    price: '$18-28',
+    href: '/pottery-classes/team-building-pottery-painting',
+    bgClass: 'pottery-bg',
+  },
+  {
+    title: 'Group Candle Making Event',
+    description: 'Group candle-making sessions for events and celebrations.',
+    price: '$25-35',
+    href: '/pottery-classes/group-candle-making-event',
+    bgClass: 'candle-bg',
+  },
+  {
+    title: 'Corporate Team Building Candle Making',
+    description: 'Professional team building with guided candle creation.',
+    price: '$25-35',
+    href: '/pottery-classes/corporate-team-building-candle-making',
+    bgClass: 'event-bg',
+  },
+];
+---
+
+<BaseLayout
+  title="Pottery Classes"
+  description="Pottery and candle making classes for adults in Centerville, TN. Date nights, team building, corporate events, and group experiences. Book your class today."
+  keywords="pottery classes, adult art classes, date night activities, team building, Centerville"
+>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Pottery Classes Centerville, TN</h1>
+      <p>Adult Classes, Date Nights & Special Events</p>
+    </div>
+  </section>
+
+  <div class="container py-4">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><span>Pottery Classes</span></li>
+      </ol>
+    </nav>
+
+    <section class="category-intro">
+      <h2>Our Pottery & Candle Classes</h2>
+      <p>
+        From romantic date nights to corporate team building, our specialized classes offer something for every group and occasion. Whether you're looking for a unique evening activity, team bonding experience, or special celebration, our pottery and candle classes deliver memorable experiences every time.
+      </p>
+    </section>
+
+    <section class="services-section">
+      <div class="services-grid">
+        {potteryClassServices.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </section>
+
+    <section class="why-classes">
+      <h2>Why Choose Our Classes</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>🎯 Specialized Experiences</h3>
+          <p>Each class is tailored to its specific audience—date nights, corporate events, or adult groups.</p>
+        </div>
+        <div class="why-item">
+          <h3>Expert Instruction</h3>
+          <p>Professional guidance ensures everyone creates something beautiful, regardless of experience.</p>
+        </div>
+        <div class="why-item">
+          <h3>Flexible Scheduling</h3>
+          <p>Evening and weekend options available for busy schedules.</p>
+        </div>
+        <div class="why-item">
+          <h3>Group-Friendly</h3>
+          <p>Custom group rates and flexible sizing for any size gathering.</p>
+        </div>
+        <div class="why-item">
+          <h3>Complete Experience</h3>
+          <p>Instruction, supplies, materials, and finished pieces all included.</p>
+        </div>
+        <div class="why-item">
+          <h3>Memorable Bonding</h3>
+          <p>Create beautiful pieces while building connections with loved ones or colleagues.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-class">
+      <h2>Featured Class Experience</h2>
+      <div style="background: var(--light-gray); padding: 3rem; border-radius: 8px; margin-top: 2rem;">
+        <div style="max-width: 600px;">
+          <h3>Date Night Pottery Painting</h3>
+          <p>
+            Make memories while creating beautiful pottery together. Our most romantic offering! Paint matching or complementary pieces while enjoying a relaxed, intimate atmosphere designed for couples.
+          </p>
+          <ul style="margin-left: 1.5rem; margin-top: 1.5rem;">
+            <li>Pre-made pottery piece selection for two</li>
+            <li>Painting supplies and expert guidance</li>
+            <li>Relaxed, romantic atmosphere</li>
+            <li>Professional glazing and kiln-firing</li>
+            <li>Take-home keepsakes of your experience</li>
+          </ul>
+          <a href="/pottery-classes/date-night-pottery-painting" class="cta-button" style="margin-top: 2rem;">
+            Learn More & Book
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="group-bookings">
+      <h2>Perfect For</h2>
+      <ul style="margin-left: 1.5rem;">
+        <li><strong>Date Nights:</strong> Romantic couples' creative experiences</li>
+        <li><strong>Corporate Events:</strong> Team building and networking</li>
+        <li><strong>Girls' Nights:</strong> Friend bonding and fun</li>
+        <li><strong>Birthday Celebrations:</strong> Unique celebration activities</li>
+        <li><strong>Bachelor/Bachelorette Parties:</strong> Pre-wedding memories</li>
+        <li><strong>Adult Groups & Clubs:</strong> Meetings with a creative twist</li>
+      </ul>
+      <p style="margin-top: 2rem;">
+        <strong>Contact us at (931) XXX-XXXX or info@thelocalplace.com for group bookings and custom class arrangements.</strong>
+      </p>
+    </section>
+
+    <section class="gallery-teaser">
+      <h2>See Our Class Experiences</h2>
+      <p>Follow along as our adults and groups create beautiful memories on Instagram!</p>
+      <p><a href="https://instagram.com/thelocalplace" target="_blank" class="cta-button">Follow Us on Instagram</a></p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb ol {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb li::after {
+    content: ' / ';
+    margin: 0 0.5rem;
+    color: #ccc;
+  }
+
+  .breadcrumb li:last-child::after {
+    content: '';
+  }
+
+  .breadcrumb a {
+    color: var(--brown);
+    text-decoration: underline;
+  }
+
+  .breadcrumb span {
+    color: var(--text-light);
+  }
+
+  .category-intro {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 3rem;
+  }
+
+  .category-intro p {
+    margin-bottom: 0;
+  }
+
+  .services-section {
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .why-classes {
+    background: var(--cream);
+    padding: 3rem;
+    border-radius: 8px;
+    margin: 4rem 0;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .why-item {
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 8px;
+    border-left: 4px solid var(--brown);
+  }
+
+  .why-item h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .featured-class {
+    margin: 4rem 0;
+  }
+
+  .group-bookings {
+    background: var(--light-gray);
+    padding: 3rem;
+    border-radius: 8px;
+    margin: 4rem 0;
+  }
+
+  .group-bookings ul li {
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-teaser {
+    text-align: center;
+    padding: 3rem;
+    background: var(--cream);
+    border-radius: 8px;
+    margin: 4rem 0 2rem;
+  }
+
+  .gallery-teaser h2 {
+    margin-top: 0;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
